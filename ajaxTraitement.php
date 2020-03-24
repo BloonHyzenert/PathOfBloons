@@ -17,7 +17,6 @@ if(!isset($_SESSION['hero'])) {
 if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
 
     //Instanciation des new objects
-
     switch($_POST['choix']) {
         case '0':
             $obj_hero = new Guerrier();
