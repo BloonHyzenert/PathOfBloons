@@ -12,11 +12,9 @@ class Hero extends Personnage{
     $this->int_pv = $int_pv;
     $this->int_attaque = $int_attaque;
     $this->int_experience = 0;
-    echo 'JE SUIS UN '.$this->str_nom;
   }
 
   public function learn_sort($sort){
     $this->sorts[] = $sort;
-    echo 'Cool! J\'ai appris '.$sort->get_nom() ;
   }
 }

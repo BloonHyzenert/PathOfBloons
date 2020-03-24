@@ -1,5 +1,13 @@
 <?php 
-
+require_once 'Class/Guerrier.php';
+require_once 'Class/Monstre.php';
+require_once 'Class/Sort.php';
+// $hero = new Guerrier();
+// $monstre = new Monstre("DRAGON", 40, 10);
+// $coup_tranchant = new Sort("Coup Tranchant", function($hero,$monstre){$monstre->fct_hit(5);});
+// $hero->learn_sort($coup_tranchant);
+// $monstre->fct_hit(20);
+// $monstre->fct_heal(10);
 if(!isset($_SESSION['hero'])) {
     session_start();
 }
@@ -13,10 +21,10 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
             $obj_hero = new Guerrier();
         break;
         case '1':
-            $obj_hero = new Mage();
+            $obj_hero = new Hero("Mage",0,0);
         break;
         case '2':
-            $obj_hero = new Bougnoule();
+            $obj_hero = new Hero("Mage",0,0);
         break;
     }
 

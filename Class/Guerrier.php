@@ -11,6 +11,5 @@ class Guerrier extends Hero {
         $this->int_pv = 20;
         $this->int_attaque = 3;
         $this->int_experience = 0;
-        echo 'JE SUIS UN '.$this->str_nom;
     }
 }

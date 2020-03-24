@@ -8,6 +8,5 @@ class Monstre extends Personnage{
     $this->str_nom = $str_nom;
     $this->int_pv = $int_pv;
     $this->int_attaque = $int_attaque;
-    echo 'JE SUIS UN '.$this->str_nom;
   }
 }
