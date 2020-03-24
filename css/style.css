@@ -3,25 +3,53 @@
     padding: 0;
 }
 
+h1 {
+    text-align: center;
+}
+
 body {
-    background-color:#e6e6e6;
+    margin : auto;
+    color : white;
+    background-image: url("../ressources/BlackBackground.jpg");
+}
+
+#titre{
+    width : 100%;
 }
 
 #plateau_jeu {
-    width: 1000px;
-    height: 500px;
+    color :  #025309 ;
+    display: block;
+    width: 80%;
     margin: auto;
     margin-top: 3%;
     background-color: whitesmoke;
     padding: 40px;
-    border-radius: 5%;
+    border-radius: 5px;
+}
+
+.image{
+    height: 100%;
+    max-width: 150px;
+    object-fit: contain;
+    border: solid 1px  #025309 ;
+}
+
+#choice_path{
+    margin-top: 5%;
+    height: 200px;
+    display: flex;
+    justify-content:  space-around;
+    margin-bottom: 2%;
 }
 
 #choose_path {
+    display: flex;
+    justify-content:  space-around;
 }
 
 #choose_path button {
-    background-color: #4CAF50;
+    background-color:  #025309 ;
     color: whitesmoke;
     padding: 15px;
     width: 100px;
@@ -30,5 +58,5 @@ body {
 }
 
 #choose_path button:hover {
-    background-color: #45a049;
+    background-color:  #025309 ;
 }
