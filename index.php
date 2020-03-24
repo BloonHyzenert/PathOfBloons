@@ -1,3 +1,24 @@
-<?php 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <title>DowlGosper</title>
+</head>
 
-echo "sounds good";
+<body>        
+    <h1>DowlGosper</h1>
+
+    <div id="plateau_jeu">Div de gestion de jeu</div>
+
+    <form id="choose_path" type="POST" action="#">
+        <button type="button" value="Gauche">Gauche</button>
+        <button type="button" value="Gauche">Milieu</button>
+        <button type="button" value="Gauche">Droite</button>
+    </form>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
+
