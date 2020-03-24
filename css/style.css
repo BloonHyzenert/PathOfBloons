@@ -25,7 +25,7 @@ body {
     display: block;
     width: 80%;
     margin: auto;
-    margin-top: 3%;
+    margin-top: 1%;
     background-color: whitesmoke;
     padding: 40px;
     border-radius: 5px;
@@ -33,14 +33,14 @@ body {
 
 .image{
     height: 100%;
-    max-width: 150px;
+    max-width: 300px;
     object-fit: contain;
     border: solid 1px  #025309 ;
 }
 
 #choice_path{
     margin-top: 5%;
-    height: 200px;
+    height: 400px;
     display: flex;
     justify-content:  space-around;
     margin-bottom: 2%;
@@ -55,9 +55,9 @@ body {
     background-color:  #025309 ;
     color: whitesmoke;
     padding: 15px;
-    width: 100px;
+    width: 250px;
     font-size: 1.3em;
-    border-radius: 15%;
+    border-radius: 15px;
 }
 
 #choose_path button:hover {
