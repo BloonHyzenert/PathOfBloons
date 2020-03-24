@@ -10,7 +10,7 @@ $(document).ready(function() {
 
     $('#choose_path button').on('click', function() {
         $.ajax({
-            url : '../Class/ajaxTraitement.php',
+            url : '../ajaxTraitement.php',
             type : 'POST', 
             data : {
                 niveau: int_niveau,
