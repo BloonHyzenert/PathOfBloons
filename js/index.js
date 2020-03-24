@@ -1,4 +1,6 @@
 function afficher_donnees() {
+    $('#plateau_jeu').empty();
+
     console.log('jaffiche des données yikes');
 }
 
@@ -19,7 +21,8 @@ $(document).ready(function() {
                 int_niveau++;
                 afficher_donnees();
             },
-            error : function(resultat, statut, erreur){
+            error : function(resultat, statut, erreur) {
+                console.log(erreur);
                 // Gestion de l'erreur;
             }
         });

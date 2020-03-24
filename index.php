@@ -10,12 +10,19 @@
 <body>
     <h1>DowlGosper</h1>
 
-    <div id="plateau_jeu">Div de gestion de jeu</div>
+    <div id="plateau_jeu">
+        <p>Bienvenu dans notre super jeu. Veuillez choisir parmit les 3 personnages :</p>
+        <ul>
+            <li>Le guerrier</li>
+            <li>Le mage</li>
+            <li>Le bougnoule</li>
+        </ul>
+    </div>
 
     <form id="choose_path" type="POST" action="#">
-        <button type="button" value="gauche">Gauche</button>
-        <button type="button" value="mileu">Milieu</button>
-        <button type="button" value="droite">Droite</button>
+        <button type="button" value="0">Gauche</button>
+        <button type="button" value="1">Milieu</button>
+        <button type="button" value="2">Droite</button>
     </form>
 
     <script src="js/index.js"></script>
