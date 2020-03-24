@@ -7,18 +7,17 @@
     <title>DowlGosper</title>
 </head>
 
-<body>        
+<body>
     <h1>DowlGosper</h1>
 
     <div id="plateau_jeu">Div de gestion de jeu</div>
 
     <form id="choose_path" type="POST" action="#">
-        <button type="button" value="Gauche">Gauche</button>
-        <button type="button" value="Gauche">Milieu</button>
-        <button type="button" value="Gauche">Droite</button>
+        <button type="button" value="gauche">Gauche</button>
+        <button type="button" value="mileu">Milieu</button>
+        <button type="button" value="droite">Droite</button>
     </form>
 
     <script src="js/index.js"></script>
 </body>
 </html>
-
