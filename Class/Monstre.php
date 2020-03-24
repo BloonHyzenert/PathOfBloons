@@ -2,9 +2,9 @@
 
 require_once 'Personnage.php';
 
-class Monstre extends Personnage{
+class Monstre extends Personnage implements \JsonSerializable {
 
-  
+
   public function __construct($str_nom, $int_pv, $int_attaque) {
 
     $this->str_nom = $str_nom;
