@@ -1,5 +1,7 @@
 <?php 
 require_once 'Class/Guerrier.php';
+require_once 'Class/Mage.php';
+require_once 'Class/Pretre.php';
 require_once 'Class/Monstre.php';
 require_once 'Class/Sort.php';
 // $hero = new Guerrier();
@@ -21,10 +23,10 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
             $obj_hero = new Guerrier();
         break;
         case '1':
-            $obj_hero = new Hero("Mage",0,0);
+            $obj_hero = new Mage();
         break;
         case '2':
-            $obj_hero = new Hero("Mage",0,0);
+            $obj_hero = new Pretre();
         break;
     }
 
