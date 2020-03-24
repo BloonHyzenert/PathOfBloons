@@ -6,11 +6,7 @@ abstract class Hero extends Personnage implements \JsonSerializable {
 
   protected $int_experience;
   protected $arr_sorts;
-
-  public function jsonSerialize() {
-    return get_object_vars($this);
-  }
-
+  
   public function learn_sort($sort){
     $this->sorts[] = $sort;
     $this->arr_sorts = [];
