@@ -3,14 +3,15 @@
 class Sort {
 
     private $str_nom;
-    private $str_type;
     
-    public function __construct($str_nom, $str_type) {
+    public function __construct($str_nom, $sort) {
         $this->str_nom = $str_nom;
-        $this->str_type = $str_type;
+        $this->sort = $sort;
     }
 
-    public function sort() {
-        echo "Je lance un sort";
+    public function get_nom(){
+        return $this->str_nom;
     }
+    public $sort;
+
 }
