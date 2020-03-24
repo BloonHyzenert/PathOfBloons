@@ -19,9 +19,9 @@
         <img class="image" src="./ressources/pretre.jpg"></img>
     </div>
     <form id="choose_path" type="POST" action="#">
-        <button type="button" value="0">Gauche</button>
-        <button type="button" value="1">Milieu</button>
-        <button type="button" value="2">Droite</button>
+        <button type="button" value="0">Guerrier</button>
+        <button type="button" value="1">Mage</button>
+        <button type="button" value="2">Prêtre</button>
     </form>
     </div>
 
