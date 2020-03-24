@@ -1,10 +1,30 @@
-<?php 
-require_once 'Class/Guerrier.php';
-require_once 'Class/Monstre.php';
-require_once 'Class/Sort.php';
-$hero = new Guerrier();
-$monstre = new Monstre("DRAGON", 40, 10);
-$coup_tranchant = new Sort("Coup Tranchant", function($hero,$monstre){$monstre->fct_hit(5);});
-$hero->learn_sort($coup_tranchant);
-$monstre->fct_hit(20);
-$monstre->fct_heal(10);
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+    <title>DowlGosper</title>
+</head>
+
+<body>
+    <h1>DowlGosper</h1>
+
+    <div id="plateau_jeu">
+        <p>Bienvenu dans notre super jeu. Veuillez choisir parmit les 3 personnages :</p>
+        <ul>
+            <li>Le guerrier</li>
+            <li>Le mage</li>
+            <li>Le bougnoule</li>
+        </ul>
+    </div>
+
+    <form id="choose_path" type="POST" action="#">
+        <button type="button" value="0">Gauche</button>
+        <button type="button" value="1">Milieu</button>
+        <button type="button" value="2">Droite</button>
+    </form>
+
+    <script src="js/index.js"></script>
+</body>
+</html>
