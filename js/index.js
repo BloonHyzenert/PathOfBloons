@@ -7,10 +7,10 @@ function afficher_donnees(arr_retour) {
         'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la glorie et la vie éternel ?!');
         $('img[alt="guerrier"]').attr('src', './ressources/evenement.jpg');
         $('#gauche button').html('Evenement');
-        $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.m_url1);
-        $('#milieu button').html(arr_retour.m_url1);
-        $('img[alt="pretre"]').attr('src', './ressources/' + arr_retour.m_url2);
-        $('#droite button').html(arr_retour.m_url2);
+        $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre_1.str_image);
+        $('#milieu button').html(arr_retour.monstre_1.str_nom);
+        $('img[alt="pretre"]').attr('src', './ressources/' + arr_retour.monstre_2.str_image);
+        $('#droite button').html(arr_retour.monstre_1.str_nom);
         $('#monstre').css('display','none');
         $('#hero').css('display','none');
         $('img[alt="pretre"]').css('display','block');
