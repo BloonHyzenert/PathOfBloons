@@ -10,12 +10,12 @@ require_once 'Class/Monstre.php';
 require_once 'Class/Sort.php';
 
 $arr_monstre = [];
-$arr_monstre[] = new Monstre('Globloon', 50, 50, 5, 0, 40, 10, 'gobelin.jpg');
-$arr_monstre[] = new Monstre('Dragloon', 50, 50, 5, 0, 40, 10, 'dragon.jpg');
-$arr_monstre[] = new Monstre('Troloon', 50, 50, 5, 0, 40, 10, 'troll.jpg');
-$arr_monstre[] = new Monstre('Slimoon', 50, 50, 5, 0, 40, 10, 'slime.jpg');
-$arr_monstre[] = new Monstre('Orcloon', 50, 50, 5, 0, 40, 10, 'orc.jpg');
-$arr_monstre[] = new Monstre('Lichloon', 50, 50, 5, 0, 40, 10, 'liche.jpg');
+$arr_monstre[] = new Monstre('Globloon', 50, 50, 25, 0, 40, 10, 'gobelin.jpg');
+$arr_monstre[] = new Monstre('Dragloon', 200, 200, 50, 30, 10, 50, 'dragon.jpg');
+$arr_monstre[] = new Monstre('Troloon', 300, 300, 30, 30, 0, 0, 'troll.jpg');
+$arr_monstre[] = new Monstre('Slimoon', 30, 30, 15, 0, 0, 10, 'slime.jpg');
+$arr_monstre[] = new Monstre('Orcloon', 125, 125, 25, 10, 10, 10, 'orc.jpg');
+$arr_monstre[] = new Monstre('Lichloon', 175, 175, 45, 10, 10, 10, 'liche.jpg');
 
 if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
 
@@ -79,7 +79,7 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
                 ];
             break;
             case '1':
-                // Monstre 1
+                // Choix monstre 1
                 $obj_monstre = $arr_monstre[$_POST['id_monstre']];
                 $arr_retour = [
                     'hero' => $obj_hero->jsonSerialize(), 
@@ -89,7 +89,7 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
                 ];
             break;
             case '2':
-                // Monstre 2
+                // Choix monstre 2
                 $obj_monstre = $arr_monstre[$_POST['id_monstre']];
                 $arr_retour = [
                     'hero' => $obj_hero->jsonSerialize(), 
@@ -104,6 +104,8 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
         $obj_monstre = Monstre::withArray($_POST['monstre']);
 
         //Combat 
+
+
 
         //si pv = 0 monstre = choix chemin + niveau++. Si pv = 0 hero, game over sinon mode = combat
         $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'monstre' => $obj_monstre->jsonSerialize(), 'mode' => 'combat', 'niveau' => $_POST['niveau']];

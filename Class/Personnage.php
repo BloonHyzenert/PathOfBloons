@@ -1,7 +1,7 @@
 <?php
 
 
-abstract class Personnage {
+abstract class Personnage implements \JsonSerializable {
 
   protected $str_nom;
   protected $str_image;
@@ -15,7 +15,7 @@ abstract class Personnage {
   final public function jsonSerialize() {
     return get_object_vars($this);
   }
-  
+ 
   public function get_nom() {
     return $this->str_nom;
   }
