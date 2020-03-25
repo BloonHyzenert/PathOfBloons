@@ -61,10 +61,14 @@
                     </div>
                 </div>
                 <img class="image" alt="guerrier" src="./ressources/guerrier.jpg"></img>
+                <img class="spell1" src="./ressources/justice.png" title="Justice"></img>
+                <img class="spell2" src="./ressources/taillade.png" title="Taillade"></img>
                 <button class="blur" type="button" value="0">Guerrier</button>
             </div>
             <div class="choice" id="milieu">
                 <img class="image" alt="mage" src="./ressources/mage.jpg"></img>
+                <img class="spell1" src="./ressources/engelure.png" title="Engelure"></img>
+                <img class="spell2" src="./ressources/blizzard.png" title="Blizzard"></img>
                 <button class="blur" type="button" value="1">Mage</button>
             </div>
             <div class="choice" id="droite">
@@ -110,10 +114,14 @@
                 </div>
             </div>
                 <img class="image" alt="pretre" src="./ressources/pretre.jpg"></img>
+                <img class="spell1" src="./ressources/marteau.png" title="Marteau Spirituel"></img>
+                <img class="spell2" src="./ressources/benediction.png" title="Benediction"></img>
                 <button class="blur" type="button" value="2">Prêtre</button>
             </div>
         </form>
-        <p id='message'></p>
+    </div>
+    <div id='message'>
+        <p >BLLLLLLOOOOON</p>
     </div>
 
 
