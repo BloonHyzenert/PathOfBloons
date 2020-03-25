@@ -12,17 +12,18 @@
     <h1>Path of Bloons</h1>
 
     <div id="plateau_jeu">
-        <p id="titre">Bienvenu dans notre super jeu. Veuillez choisir parmit les 3 personnages :</p>
-    <div id="choice_path">
-        <img class="image" src="./ressources/guerrier.jpg"></img>
-        <img class="image" src="./ressources/mage.jpg"></img>
-        <img class="image" src="./ressources/pretre.jpg"></img>
-    </div>
-    <form id="choose_path" type="POST" action="#">
-        <button type="button" value="0">Guerrier</button>
-        <button type="button" value="1">Mage</button>
-        <button type="button" value="2">Prêtre</button>
-    </form>
+        <p id="titre">Bienvenu dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
+        <div id="choice_path">
+            <img class="image" alt="guerrier" src="./ressources/guerrier.jpg"></img>
+            <img class="image" alt="mage" src="./ressources/mage.jpg"></img>
+            <img class="image" alt="pretre" src="./ressources/pretre.jpg"></img>
+        </div>
+        <form id="choose_path" type="POST" action="#">
+            <button type="button" value="0">Guerrier</button>
+            <button type="button" value="1">Mage</button>
+            <button type="button" value="2">Prêtre</button>
+        </form>
+        <p id='message'></p>
     </div>
 
 

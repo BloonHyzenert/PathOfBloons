@@ -16,4 +16,12 @@ class Mage extends Hero {
         $this->int_esquive = 10;
         $this->int_critique = 20;
     }
+
+    public function withArray($arr_data) {
+        $obj_hero = new self();
+        $obj_hero->set_pv($arr_data['int_pv']);
+        $obj_hero->set_attaque($arr_data['int_attaque']);
+        return $obj_hero;
+    }
+    
 }

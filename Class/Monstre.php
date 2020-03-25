@@ -14,4 +14,12 @@ class Monstre extends Personnage implements \JsonSerializable {
     $this->str_image = $str_image;
 
   }
+
+  public function withArray($arr_data) {
+    $obj_hero = new self($arr_data['str_nom'], $arr_data['int_pv'], $arr_data['int_attaque'], $arr_data['int_defense'], $arr_data['int_esquive'], $arr_data['int_critique'], $arr_data['str_image']);
+    $obj_hero->set_pv($arr_data['int_pv']);
+    $obj_hero->set_attaque($arr_data['int_attaque']);
+    return $obj_hero;
+}
+
 }

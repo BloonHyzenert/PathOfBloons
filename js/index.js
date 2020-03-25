@@ -1,9 +1,12 @@
-function afficher_donnees(str_retour) {
+function afficher_donnees(arr_retour) {
     //$('#plateau_jeu').empty();
 
-    if (str_retour.mode === 'choix_chemin') {
+    if (arr_retour.mode === 'choix_chemin') {
         //Display choix du chemin
-    } else if (str_retour.mode === 'combat') {
+        $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
+        'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la glorie et la vie éternel ?!');
+    } else if (arr_retour.mode === 'combat') {
+        $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
         //Display mode combat
     }
 }
@@ -11,7 +14,9 @@ function afficher_donnees(str_retour) {
 $(document).ready(function() {
 
     var int_niveau = 0;
+    var str_mode = 'choix_hero';
     var obj_hero = obj_monstre = {};
+
     $('#choose_path button').on('click', function() {
         $.ajax({
             url : '../ajaxTraitement.php',
@@ -20,14 +25,17 @@ $(document).ready(function() {
                 niveau: int_niveau,
                 choix: $(this).val(),
                 hero: obj_hero,
-                monstre: obj_monstre
+                monstre: obj_monstre,
+                mode: str_mode
             },
             dataType : 'JSON',
-            success : function(str_retour) {
-                int_niveau++;
-                obj_hero = str_retour.hero;
-                console.log(str_retour);
-                afficher_donnees(str_retour);
+            success : function(arr_retour) {
+                int_niveau = arr_retour.niveau;
+                obj_hero = arr_retour.hero;
+                obj_monstre = arr_retour.monstre;
+                str_mode = arr_retour.mode;
+
+                afficher_donnees(arr_retour);
             },
             error : function(resultat, statut, erreur) {
                 console.log(erreur);
