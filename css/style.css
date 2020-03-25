@@ -3,8 +3,9 @@
     padding: 0;
 }
 
-p{
-    text-align: center;
+.text{
+    display: inline-block;
+    font-size: 2em;
 }
 
 h1 {
@@ -19,25 +20,41 @@ body {
 }
 
 #hero{
-    position: fixed;
     right:0px;
     top: 0px;
     background-color: gray;
-    border-radius: 5px;
     border: solid 2px #025309;
+}
+
+#monstre{
+    right:0px;
+    top: 0px;
+    background-color: gray;
+    border: solid 2px #025309;
+}
+
+.row{
+    margin-top: 20px;
+    padding-left: 10px;
 }
 
 #stat{
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
     padding: 2px;
 }
 
 .icon{
-    height : 20px;
-    width: 20px;
+    height : 40px;
+    width: 40px;
 }
 
+.iconPV{
+    height : 20px;
+    width: 20px;
+    margin-right: 10px;
+}
 #titre{
     width : 100%;
     font-size: 1.5em;
