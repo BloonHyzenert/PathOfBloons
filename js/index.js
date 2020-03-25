@@ -1,11 +1,13 @@
 function afficher_donnees(arr_retour) {
-    //$('#plateau_jeu').empty();
+    
     $('#niveau').html(arr_retour.hero.int_experience);
     $('#etage').html(arr_retour.niveau);
+
     if (arr_retour.mode === 'choix_chemin') {
         //Display choix du chemin
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
         'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la glorie et la vie éternel ?!');
+
         $('img[alt="guerrier"]').attr('src', './ressources/evenement.jpg');
         $('#gauche button').html('Evenement');
         $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre_1.str_image);
@@ -16,10 +18,12 @@ function afficher_donnees(arr_retour) {
         $('#hero').css('display','none');
         $('img[alt="pretre"]').css('display','block');
         $('img[alt="guerrier"]').css('display','block');
+
     } else if (arr_retour.mode === 'combat') {
         //Display mode combat
         $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
-        $('img[alt="Mage"]').attr('src', arr_retour.monstre.str_image);
+        
+        $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre.str_image);
         $('#monstre').css('display','block');
         $('#hero').css('display','block');
         $('img[alt="pretre"]').css('display','none');
@@ -28,14 +32,14 @@ function afficher_donnees(arr_retour) {
         $('#defense').html(arr_retour.hero.int_defense);
         $('#critique').html(arr_retour.hero.int_critique);
         $('#esquive').html(arr_retour.hero.int_esquive);
-        $("#pv").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>"+arr_retour.hero.int_pv + "/" + arr_retour.hero.int_pv);
-        $("#energie").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>"+arr_retour.hero.int_pv + "/" + arr_retour.hero.int_pv);
+        $("#pv").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>" + arr_retour.hero.int_pv + "/" + arr_retour.hero.int_pv);
+        $("#energie").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>" + arr_retour.hero.int_pv + "/" + arr_retour.hero.int_pv);
         $('#attaqueMonstre').html(arr_retour.monstre.int_attaque);
         $('#defenseMonstre').html(arr_retour.monstre.int_defense);
         $('#critiqueMonstre').html(arr_retour.monstre.int_critique);
         $('#esquiveMonstre').html(arr_retour.monstre.int_esquive);
-        $("#pvMonstre").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>"+arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
-        $("#energieMonstre").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>"+arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
+        $("#pvMonstre").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>" + arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
+        $("#energieMonstre").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>" + arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
     }
 }
 
