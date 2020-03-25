@@ -29,7 +29,6 @@ $(document).ready(function() {
             obj_data = {
                 'niveau': int_niveau,
                 'choix': $(this).val(),
-                'hero': obj_hero,
                 'mode': str_mode,
             };
         } else if(str_mode === 'choix_chemin') {
