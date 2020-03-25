@@ -15,7 +15,7 @@
         <p id="titre">Bienvenu dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
         <div id="choice_path">
             <div id="hero">
-                <div id="titre">Hero</div>
+                <div id="titre2">Hero</div>
                 <div class="container">
                     <div class="col-md-12">
                         <div class="health-box">
@@ -49,7 +49,7 @@
             <img class="image" alt="mage" src="./ressources/mage.jpg"></img>
             <img class="image" alt="pretre" src="./ressources/pretre.jpg"></img>
             <div id="monstre">
-                <div id="titre">Monstre</div>
+                <div id="titre2">Monstre</div>
                 <div class="container">
                     <div class="col-md-12">
                         <div class="health-box">
