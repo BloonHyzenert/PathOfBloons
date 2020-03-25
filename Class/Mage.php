@@ -4,18 +4,20 @@ require_once 'Hero.php';
 
 class Mage extends Hero {
 
-    private $passif;
+    protected $int_mana;
 
     public function __construct() {
         $this->str_nom = "Mage";
         $this->str_image = "mage.jpg";
-        $this->int_pv = 10;
-        $this->int_pv_actuel = 200;
-        $this->int_attaque = 5;
+        $this->int_pv = 150;
+        $this->int_pv_actuel = 150;
+        $this->int_attaque = 30;
         $this->int_experience = 0;
-        $this->int_defense = 5;
-        $this->int_esquive = 10;
-        $this->int_critique = 20;
+        $this->int_niveau = 1;
+        $this->int_defense = 0;
+        $this->int_esquive = 20;
+        $this->int_critique = 30;
+        $this->mana = 100;
     }
 
     public static function withArray($arr_data) {

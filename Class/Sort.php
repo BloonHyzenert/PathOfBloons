@@ -2,16 +2,17 @@
 
 class Sort {
 
-    private $str_nom;
+    protected $str_nom;
+    protected $int_degat;
+    protected $str_effet;
     
-    public function __construct($str_nom, $sort) {
+    public function __construct($str_nom, $int_degat, $str_effet) {
         $this->str_nom = $str_nom;
-        $this->sort = $sort;
+        $this->int_degat = $int_degat;
+        $this->str_effet = $str_effet;
     }
 
-    public function get_nom(){
+    public function get_nom() {
         return $this->str_nom;
     }
-    public $sort;
-
 }
