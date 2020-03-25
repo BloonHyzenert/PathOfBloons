@@ -7,12 +7,12 @@ require_once 'Class/Monstre.php';
 require_once 'Class/Sort.php';
 
 $arr_monstre = [];
-$arr_monstre[] = new Monstre('Globloon', 50, 5, 0, 40, 10, '');
-$arr_monstre[] = new Monstre('Dragloon', 50, 5, 0, 40, 10, '');
-$arr_monstre[] = new Monstre('Troloon', 50, 5, 0, 40, 10, '');
-$arr_monstre[] = new Monstre('Slimoon', 50, 5, 0, 40, 10, '');
-$arr_monstre[] = new Monstre('Orcloon', 50, 5, 0, 40, 10, '');
-$arr_monstre[] = new Monstre('Ichloon', 50, 5, 0, 40, 10, '');
+$arr_monstre[] = new Monstre('Globloon', 50, 5, 0, 40, 10, 'gobelin.jpg');
+$arr_monstre[] = new Monstre('Dragloon', 50, 5, 0, 40, 10, 'dragon.jpg');
+$arr_monstre[] = new Monstre('Troloon', 50, 5, 0, 40, 10, 'troll.jpg');
+$arr_monstre[] = new Monstre('Slimoon', 50, 5, 0, 40, 10, 'slime.jpg');
+$arr_monstre[] = new Monstre('Orcloon', 50, 5, 0, 40, 10, 'orc.jpg');
+$arr_monstre[] = new Monstre('Lichloon', 50, 5, 0, 40, 10, 'liche.jpg');
 
 if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
 
@@ -28,8 +28,7 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
             $obj_hero = new Pretre();
         break;
     }
-
-    $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'niveau' => $_POST['niveau'] + 1];
+    $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'niveau' => $_POST['niveau'] + 1, 'monstre1' => 'gobelin.jpg', 'monstre2' => 'dragon.jpg'];
     echo json_encode($arr_retour);
 }
 
