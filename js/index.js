@@ -40,6 +40,10 @@ function afficher_donnees(arr_retour) {
         $('#esquiveMonstre').html(arr_retour.monstre.int_esquive);
         $("#pvMonstre").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>" + arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
         $("#energieMonstre").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>" + arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
+        
+        $('#gauche button').html(arr_retour.hero.arr_sorts[0].str_nom);
+        $('#milieu button').html(arr_retour.hero.arr_sorts[1].str_nom);
+        $('#droite button').html(arr_retour.hero.arr_sorts[2].str_nom);
     }
 }
 
