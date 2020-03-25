@@ -50,11 +50,14 @@ abstract class Personnage implements \JsonSerializable {
   }
 
   public function set_pv($int_pv) {
-    $this->$int_pv = $int_pv;
+    $this->int_pv = $int_pv;
   }
 
-  public function set_pv_actuel($int_pv_actuel) {
-    $this->$int_pv_actuel = $int_pv_actuel;
+  public function set_pv_actuel($int_pv_restant) {
+    $this->int_pv_actuel = $int_pv_restant;
   }
 
+  public function set_defense($int_defense) {
+    $this->defense = $int_defense;
+  }
 }

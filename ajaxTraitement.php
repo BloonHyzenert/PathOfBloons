@@ -55,7 +55,6 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
 if(isset($_POST['niveau']) && $_POST['niveau'] > 0) { 
    
     $arr_retour = [];
-
     if($_POST['hero']['str_nom'] === 'Guerrier') {
         $obj_hero = Guerrier::withArray($_POST['hero']);
     } else if($_POST['hero']['str_nom'] === 'Mage') {
@@ -69,6 +68,8 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
         switch($_POST['choix']) {
             case '0':
                 // Evenement
+
+                // Nouveau choix de monstre
                 $int_rand1 = random_int(0, count($arr_monstre) - 1);
                 $int_rand2 = random_int(0, count($arr_monstre) - 1);
             
@@ -108,11 +109,34 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
         $obj_monstre = Monstre::withArray($_POST['monstre']);
 
         //Combat 
+        $obj_hero->attaquer($obj_monstre, $_POST['choix']);
 
+        if($obj_monstre->get_pv_actuel() == 0) {
 
+            $obj_hero->set_experience($obj_hero->get_experience() + 100);
+            if($obj_hero->get_experience() >= 100) {
+                $obj_hero->nouveau_niveau();
+            }
 
+            // Nouveau choix monstres
+            $int_rand1 = random_int(0, count($arr_monstre) - 1);
+            $int_rand2 = random_int(0, count($arr_monstre) - 1);
+
+            $arr_retour = [
+                'hero' => $obj_hero->jsonSerialize(), 
+                'mode' => 'choix_chemin', 
+                'm_id1' => $int_rand1, 
+                'm_id2'=> $int_rand2, 
+                'monstre_1' => $arr_monstre[$int_rand1]->jsonSerialize(), 
+                'monstre_2' => $arr_monstre[$int_rand2]->jsonSerialize(), 
+                'niveau' => $_POST['niveau'] + 1
+            ];
+        } else {
+            $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'monstre' => $obj_monstre->jsonSerialize(), 'mode' => 'combat', 'niveau' => $_POST['niveau']];
+        }
+        
         //si pv = 0 monstre = choix chemin + niveau++. Si pv = 0 hero, game over sinon mode = combat
-        $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'monstre' => $obj_monstre->jsonSerialize(), 'mode' => 'combat', 'niveau' => $_POST['niveau']];
+        //$arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'monstre' => $obj_monstre->jsonSerialize(), 'mode' => 'combat', 'niveau' => $_POST['niveau']];
     }
 
     echo json_encode($arr_retour);

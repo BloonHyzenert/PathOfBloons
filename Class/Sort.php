@@ -16,6 +16,10 @@ class Sort implements \JsonSerializable {
         return $this->str_nom;
     }
 
+    public function get_degat() {
+        return $this->int_degat;
+    }
+
     final public function jsonSerialize() {
         return get_object_vars($this);
     }
