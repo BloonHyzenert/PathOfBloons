@@ -20,16 +20,14 @@ body {
 }
 
 #hero{
-    right:0px;
-    top: 0px;
+    height: 80%;
     background-color: gray;
     border: solid 2px #025309;
     display: none;
 }
 
 #monstre{
-    right:0px;
-    top: 0px;
+    height: 80%;
     background-color: gray;
     border: solid 2px #025309;
     display: none;
@@ -72,18 +70,19 @@ body {
     color :  #025309 ;
     display: block;
     width: 80%;
+    height: 75vh;
     margin: auto;
     margin-top: 1%;
-    background-color: whitesmoke;
+    background-color: white;
     padding: 40px;
     border-radius: 5px;
 }
 
 .image{
-    height: 100%;
+    height: 80%;
     max-width: 300px;
     object-fit: contain;
-    border: solid 1px  #025309 ;
+    border: solid 2px  #025309 ;
 }
 
 .blur:hover{
@@ -91,19 +90,21 @@ body {
 }
 
 #choice_path{
-    margin-top: 5%;
+    margin-top: 20px;
     height: 400px;
     display: flex;
     justify-content:  space-around;
     margin-bottom: 2%;
 }
-
-#choose_path {
+.choice{
+    margin: 3px;
+    height: 500px;
     display: flex;
+    align-items: center;
     justify-content:  space-around;
+    flex-direction: column;
 }
-
-#choose_path button {
+#choice_path button {
     background-color:  #025309 ;
     color: whitesmoke;
     padding: 15px;
@@ -112,6 +113,6 @@ body {
     border-radius: 15px;
 }
 
-#choose_path button:hover {
+#choice_path button:hover {
     background-color:  #025309 ;
 }

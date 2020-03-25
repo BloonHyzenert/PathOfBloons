@@ -13,41 +13,47 @@
     <h1>Path of Bloons</h1>
     <div id="plateau_jeu">
         <p id="titre">Bienvenu dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
-        <div id="choice_path">
-            <div id="hero">
-                <div id="titre2">Hero</div>
-                <div class="container">
-                    <div class="col-md-12">
-                        <div class="health-box">
-                            <div class="health-bar-red"></div>
-                            <div class="health-bar-blue"></div>
-                            <div class="health-bar"></div>
-                            <div class="health-bar-text"></div>
+        <form id="choice_path" type="POST" action="#">
+            <div class="choice" id="gauche">
+                <div id="hero">
+                    <div id="titre2">Hero</div>
+                    <div class="container">
+                        <div class="col-md-12">
+                            <div class="health-box">
+                                <div class="health-bar-red"></div>
+                                <div class="health-bar-blue"></div>
+                                <div class="health-bar"></div>
+                                <div class="health-bar-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="stat">
+                        <div class="row">
+                            <img class="icon" src="./ressources/epee.png"></img>
+                            <div class="text" id="attaque">12</div>
+                        </div>
+                        <div class="row">
+                            <img class="icon" src="./ressources/critique.png"></img>
+                            <div class="text" id="critique">12</div>
+                        </div>
+                        <div class="row">
+                            <img class="icon" src="./ressources/bouclier.png"></img>
+                            <div class="text" id="defense">12</div>
+                        </div>
+                        <div class="row">
+                            <img class="icon" src="./ressources/esquive.png"></img>
+                            <div class="text" id="esquive">12</div>
                         </div>
                     </div>
                 </div>
-                <div id="stat">
-                    <div class="row">
-                        <img class="icon" src="./ressources/epee.png"></img>
-                        <div class="text">12</div>
-                    </div>
-                    <div class="row">
-                        <img class="icon" src="./ressources/critique.png"></img>
-                        <div class="text">12</div>
-                    </div>
-                    <div class="row">
-                        <img class="icon" src="./ressources/bouclier.png"></img>
-                        <div class="text">12</div>
-                    </div>
-                    <div class="row">
-                        <img class="icon" src="./ressources/esquive.png"></img>
-                        <div class="text">12</div>
-                    </div>
-                </div>
+                <img class="image" alt="guerrier" src="./ressources/guerrier.jpg"></img>
+                <button class="blur" type="button" value="0">Guerrier</button>
             </div>
-            <img class="image" alt="guerrier" src="./ressources/guerrier.jpg"></img>
-            <img class="image" alt="mage" src="./ressources/mage.jpg"></img>
-            <img class="image" alt="pretre" src="./ressources/pretre.jpg"></img>
+            <div class="choice" id="milieu">
+                <img class="image" alt="mage" src="./ressources/mage.jpg"></img>
+                <button class="blur" type="button" value="1">Mage</button>
+            </div>
+            <div class="choice" id="droite">
             <div id="monstre">
                 <div id="titre2">Monstre</div>
                 <div class="container">
@@ -63,27 +69,25 @@
                 <div id="stat">
                     <div class="row">
                         <img class="icon" src="./ressources/epee.png"></img>
-                        <div class="text">12</div>
+                        <div class="text" id="attaqueMonstre">12</div>
                     </div>
                     <div class="row">
                         <img class="icon" src="./ressources/critique.png"></img>
-                        <div class="text">12</div>
+                        <div class="text" id="critiqueMonstre">12</div>
                     </div>
                     <div class="row">
                         <img class="icon" src="./ressources/bouclier.png"></img>
-                        <div class="text">12</div>
+                        <div class="text" id="defenseMonstre">12</div>
                     </div>
                     <div class="row">
                         <img class="icon" src="./ressources/esquive.png"></img>
-                        <div class="text">12</div>
+                        <div class="text" id="esquiveMonstre">12</div>
                     </div>
                 </div>
             </div>
-        </div>
-        <form id="choose_path" type="POST" action="#">
-            <button class="blur" type="button" value="0">Guerrier</button>
-            <button class="blur" type="button" value="1">Mage</button>
-            <button class="blur" type="button" value="2">Prêtre</button>
+                <img class="image" alt="pretre" src="./ressources/pretre.jpg"></img>
+                <button class="blur" type="button" value="2">Prêtre</button>
+            </div>
         </form>
         <p id='message'></p>
     </div>

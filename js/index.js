@@ -6,12 +6,23 @@ function afficher_donnees(arr_retour) {
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
         'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la glorie et la vie éternel ?!');
         $('img[alt="guerrier"]').attr('src', './ressources/evenement.jpg');
+        $('#gauche button').html('Evenement');
         $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.m_url1);
+        $('#milieu button').html(arr_retour.m_url1);
         $('img[alt="pretre"]').attr('src', './ressources/' + arr_retour.m_url2);
+        $('#droite button').html(arr_retour.m_url2);
+        $('#monstre').css('display','none');
+        $('#hero').css('display','none');
+        $('img[alt="pretre"]').css('display','block');
+        $('img[alt="guerrier"]').css('display','block');
     } else if (arr_retour.mode === 'combat') {
         //Display mode combat
         $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
         $('img[alt="Mage"]').attr('src', arr_retour.monstre.str_image);
+        $('#monstre').css('display','block');
+        $('#hero').css('display','block');
+        $('img[alt="pretre"]').css('display','none');
+        $('img[alt="guerrier"]').css('display','none');
     }
 }
 
@@ -23,7 +34,7 @@ $(document).ready(function() {
     var obj_hero = obj_monstre = {};
     var obj_data = {};
 
-    $('#choose_path button').on('click', function() {
+    $('#choice_path div button').on('click', function() {
 
         if(str_mode === 'choix_hero') {
             obj_data = {
