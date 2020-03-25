@@ -13,14 +13,14 @@
     <h1>Path of Bloons</h1>
         <div id="hero">
             <div class="container">
-            <div class="col-md-12">
-                <div class="health-box">
-                    <div class="health-bar-red"></div>
-                    <div class="health-bar-blue"></div>
-                    <div class="health-bar"></div>
-                    <div class="health-bar-text"></div>
+                <div class="col-md-12">
+                    <div class="health-box">
+                        <div class="health-bar-red"></div>
+                        <div class="health-bar-blue"></div>
+                        <div class="health-bar"></div>
+                        <div class="health-bar-text"></div>
+                    </div>
                 </div>
-            </div>
             </div>
             <div id="stat">
                 <div>
