@@ -2,11 +2,15 @@ function afficher_donnees(arr_retour) {
     
     $('#niveau').html(arr_retour.hero.int_niveau);
     $('#etage').html(arr_retour.niveau);
+    $('.spell1').css('display','none');
+    $('.spell2').css('display','none');
+    $('.spell3').css('display','none');
+    $('#message').css('display','flex');
 
     if (arr_retour.mode === 'choix_chemin') {
         //Display choix du chemin
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
-        'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la glorie et la vie éternel ?!');
+        'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la gloire et la vie éternel ?!');
 
         $('img[alt="guerrier"]').attr('src', './ressources/evenement.jpg');
         $('#gauche button').html('Evenement');
@@ -41,10 +45,13 @@ function afficher_donnees(arr_retour) {
         $("#pvMonstre").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>" + arr_retour.monstre.int_pv_actuel + "/" + arr_retour.monstre.int_pv);
         $("#energieMonstre").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>" + arr_retour.monstre.int_pv_actuel + "/" + arr_retour.monstre.int_pv);
         
-        $('#gauche button').html(arr_retour.hero.arr_sorts[0].str_nom);
-        $('#milieu button').html(arr_retour.hero.arr_sorts[1].str_nom);
-        $('#droite button').html('-');
+        $('#gauche button').html('<img class="iconSpell" src="./ressources/justice.png" title="Justice"></img>'+arr_retour.hero.arr_sorts[0].str_nom);
+        $('#milieu button').html('<img class="iconSpell" src="./ressources/justice.png" title="Justice"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
+        $('#droite button').html('XXXXXX'/*arr_retour.hero.arr_sorts[2].str_nom*/);
     }
+    $('#message').fadeOut(2000);
+    setTimeout(function(){ $('#message').css('display','none'); }, 2000);
+    
 }
 
 $(document).ready(function() {

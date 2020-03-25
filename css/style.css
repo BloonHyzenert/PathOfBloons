@@ -1,6 +1,10 @@
 * {
     margin: 0;
     padding: 0;
+    -moz-user-select: none; /* Firefox */
+    -webkit-user-select: none; /* Chrome, Safari, Opéra depuis la version 15 */
+    -ms-user-select: none; /* Internet explorer depuis la version 10 et Edge */
+    user-select: none; /* Propriété standard */
 }
 
 .text{
@@ -43,6 +47,36 @@ body {
     flex-direction: column;
     justify-content: space-around;
     padding: 2px;
+}
+.iconSpell{
+    cursor: pointer;
+    margin-right: 3px;
+    height : 40px;
+    width: 40px;
+}
+.spell1{
+    cursor: pointer;
+    position: absolute;
+    margin-right: 180px;
+    margin-top: 250px;
+    height : 40px;
+    width: 40px;
+}
+.spell2{
+    cursor: pointer;
+    position: absolute;
+    margin-right: 90px;
+    margin-top: 250px;
+    height : 40px;
+    width: 40px;
+}
+.spell3{
+    cursor: pointer;
+    position: absolute;
+    margin-right: 0px;
+    margin-top: 250px;
+    height : 40px;
+    width: 40px;
 }
 
 .icon{
@@ -109,6 +143,20 @@ body {
     border: solid 2px  #025309 ;
 }
 
+#message{
+    display: none;/*flex*/
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    top : 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    font-size: 4em;
+    color: green;
+}
+
 .blur:hover{
     opacity: 0.5;
 }
@@ -129,6 +177,10 @@ body {
     flex-direction: column;
 }
 #choice_path button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
     background-color:  #025309 ;
     color: whitesmoke;
     padding: 15px;
