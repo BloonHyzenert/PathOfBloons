@@ -5,13 +5,13 @@ function afficher_donnees(arr_retour) {
         //Display choix du chemin
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
         'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la glorie et la vie éternel ?!');
-        $('img[alt="Guerrier"]').attr('src', './ressources/'.arr_retour.monstre1);
-        $('img[alt="Mage"]').attr('src', './ressources/'.arr_retour.monstre2);
-        $('img[alt="Pretre"]').attr('src', 'evenement.jpg');
+        $('img[alt="guerrier"]').attr('src', './ressources/evenement.jpg');
+        $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre1);
+        $('img[alt="pretre"]').attr('src', './ressources/' + arr_retour.monstre2);
     } else if (arr_retour.mode === 'combat') {
+        //Display mode combat
         $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
         $('img[alt="Mage"]').attr('src', arr_retour.monstre.str_image);
-        //Display mode combat
     }
 }
 

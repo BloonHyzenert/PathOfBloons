@@ -28,7 +28,7 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
             $obj_hero = new Pretre();
         break;
     }
-    $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'niveau' => $_POST['niveau'] + 1, 'monstre1' => 'gobelin.jpg', 'monstre2' => 'dragon.jpg'];
+    $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'monstre1' => 'gobelin.jpg', 'monstre2' => 'dragon.jpg', 'niveau' => $_POST['niveau'] + 1];
     echo json_encode($arr_retour);
 }
 
@@ -49,7 +49,7 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
         switch($_POST['choix']) {
             case '0':
                 // Evenement
-                $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'niveau' => $_POST['niveau'] + 1];
+                $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'monstre1' => 'gobelin.jpg', 'monstre2' => 'dragon.jpg', 'niveau' => $_POST['niveau'] + 1];
             break;
             case '1':
                 // Monstre 1
