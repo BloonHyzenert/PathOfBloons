@@ -4,12 +4,13 @@
 abstract class Personnage {
 
   protected $str_nom;
+  protected $str_image;
   protected $int_pv;
+  protected $int_pv_actuel;
   protected $int_attaque;
   protected $int_defense;
   protected $int_esquive;
   protected $int_critique;
-  protected $str_image;
  
   final public function jsonSerialize() {
     return get_object_vars($this);
@@ -21,6 +22,10 @@ abstract class Personnage {
 
   public function get_pv() {
     return $this->int_pv;
+  }
+
+  public function get_pv_actuel() {
+    return $this->int_pv_actuel;
   }
 
   public function get_attaque() {
@@ -36,7 +41,7 @@ abstract class Personnage {
     return $this->int_critique;
   }
 
-  public function get_Image() {
+  public function get_image() {
     return $this->str_image;
   }
   
@@ -47,4 +52,9 @@ abstract class Personnage {
   public function set_pv($int_pv) {
     $this->$int_pv = $int_pv;
   }
+
+  public function set_pv_actuel($int_pv_actuel) {
+    $this->$int_pv_actuel = $int_pv_actuel;
+  }
+
 }

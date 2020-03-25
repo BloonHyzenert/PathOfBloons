@@ -24,6 +24,7 @@ body {
     top: 0px;
     background-color: gray;
     border: solid 2px #025309;
+    display: none;
 }
 
 #monstre{
@@ -31,6 +32,7 @@ body {
     top: 0px;
     background-color: gray;
     border: solid 2px #025309;
+    display: none;
 }
 
 .row{

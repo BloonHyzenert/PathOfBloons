@@ -1,5 +1,8 @@
 <?php 
 
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
+
 require_once 'Class/Guerrier.php';
 require_once 'Class/Mage.php';
 require_once 'Class/Pretre.php';
@@ -7,12 +10,12 @@ require_once 'Class/Monstre.php';
 require_once 'Class/Sort.php';
 
 $arr_monstre = [];
-$arr_monstre[] = new Monstre('Globloon', 50, 5, 0, 40, 10, 'gobelin.jpg');
-$arr_monstre[] = new Monstre('Dragloon', 50, 5, 0, 40, 10, 'dragon.jpg');
-$arr_monstre[] = new Monstre('Troloon', 50, 5, 0, 40, 10, 'troll.jpg');
-$arr_monstre[] = new Monstre('Slimoon', 50, 5, 0, 40, 10, 'slime.jpg');
-$arr_monstre[] = new Monstre('Orcloon', 50, 5, 0, 40, 10, 'orc.jpg');
-$arr_monstre[] = new Monstre('Lichloon', 50, 5, 0, 40, 10, 'liche.jpg');
+$arr_monstre[] = new Monstre('Globloon', 50, 50, 5, 0, 40, 10, 'gobelin.jpg');
+$arr_monstre[] = new Monstre('Dragloon', 50, 50, 5, 0, 40, 10, 'dragon.jpg');
+$arr_monstre[] = new Monstre('Troloon', 50, 50, 5, 0, 40, 10, 'troll.jpg');
+$arr_monstre[] = new Monstre('Slimoon', 50, 50, 5, 0, 40, 10, 'slime.jpg');
+$arr_monstre[] = new Monstre('Orcloon', 50, 50, 5, 0, 40, 10, 'orc.jpg');
+$arr_monstre[] = new Monstre('Lichloon', 50, 50, 5, 0, 40, 10, 'liche.jpg');
 
 if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
 
@@ -28,7 +31,20 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
             $obj_hero = new Pretre();
         break;
     }
-    $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'monstre1' => 'gobelin.jpg', 'monstre2' => 'dragon.jpg', 'niveau' => $_POST['niveau'] + 1];
+
+    $int_rand1 = random_int(0, count($arr_monstre) - 1);
+    $int_rand2 = random_int(0, count($arr_monstre) - 1);
+
+    $arr_retour = [
+        'hero' => $obj_hero->jsonSerialize(), 
+        'mode' => 'choix_chemin', 
+        'm_id1' => $int_rand1, 
+        'm_id2'=> $int_rand2, 
+        'm_url1' => $arr_monstre[$int_rand1]->get_image(), 
+        'm_url2' => $arr_monstre[$int_rand2]->get_image(), 
+        'niveau' => $_POST['niveau'] + 1
+    ];
+
     echo json_encode($arr_retour);
 }
 
@@ -49,17 +65,38 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
         switch($_POST['choix']) {
             case '0':
                 // Evenement
-                $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'mode' => 'choix_chemin', 'monstre1' => 'gobelin.jpg', 'monstre2' => 'dragon.jpg', 'niveau' => $_POST['niveau'] + 1];
+                $int_rand1 = random_int(0, count($arr_monstre) - 1);
+                $int_rand2 = random_int(0, count($arr_monstre) - 1);
+            
+                $arr_retour = [
+                    'hero' => $obj_hero->jsonSerialize(), 
+                    'mode' => 'choix_chemin', 
+                    'm_id1' => $int_rand1, 
+                    'm_id2'=> $int_rand2, 
+                    'm_url1' => $arr_monstre[$int_rand1]->get_image(), 
+                    'm_url2' => $arr_monstre[$int_rand2]->get_image(), 
+                    'niveau' => $_POST['niveau'] + 1
+                ];
             break;
             case '1':
                 // Monstre 1
-                $obj_monstre = $arr_monstre[0];
-                $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'monstre' => $obj_monstre->jsonSerialize(), 'mode' => 'combat', 'niveau' => $_POST['niveau'] + 1];
+                $obj_monstre = $arr_monstre[$_POST['id_monstre']];
+                $arr_retour = [
+                    'hero' => $obj_hero->jsonSerialize(), 
+                    'monstre' => $obj_monstre->jsonSerialize(), 
+                    'mode' => 'combat', 
+                    'niveau' => $_POST['niveau'] + 1
+                ];
             break;
             case '2':
                 // Monstre 2
-                $obj_monstre = $arr_monstre[1];
-                $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'monstre' => $obj_monstre->jsonSerialize(), 'mode' => 'combat', 'niveau' => $_POST['niveau'] + 1];
+                $obj_monstre = $arr_monstre[$_POST['id_monstre']];
+                $arr_retour = [
+                    'hero' => $obj_hero->jsonSerialize(), 
+                    'monstre' => $obj_monstre->jsonSerialize(), 
+                    'mode' => 'combat', 
+                    'niveau' => $_POST['niveau'] + 1
+                ];
             break;
         }    
 
