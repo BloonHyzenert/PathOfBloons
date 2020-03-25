@@ -11,8 +11,8 @@
 
 <body>
     <h1>Path of Bloons</h1>
-        <div id="hero">
-            <div class="container">
+    <div id="hero">
+        <div class="container">
             <div class="col-md-12">
                 <div class="health-box">
                     <div class="health-bar-red"></div>
@@ -21,26 +21,26 @@
                     <div class="health-bar-text"></div>
                 </div>
             </div>
+        </div>
+        <div id="stat">
+            <div>
+                <img class="icon" src="./ressources/epee.png"></img>
+                <p>12</p>
             </div>
-            <div id="stat">
-                <div>
-                    <img class="icon" src="./ressources/epee.png"></img>
-                    <p>12</p>
-                </div>
-                <div>
-                    <img class="icon" src="./ressources/critique.png"></img>
-                    <p>100%</p>
-                </div>
-                <div>
-                    <img class="icon" src="./ressources/bouclier.png"></img>
-                    <p>5</p>
-                </div>
-                <div>
-                    <img class="icon" src="./ressources/esquive.png"></img>
-                    <p>30</p>
-                </div>
+            <div>
+                <img class="icon" src="./ressources/critique.png"></img>
+                <p>100%</p>
+            </div>
+            <div>
+                <img class="icon" src="./ressources/bouclier.png"></img>
+                <p>5</p>
+            </div>
+            <div>
+                <img class="icon" src="./ressources/esquive.png"></img>
+                <p>30</p>
             </div>
         </div>
+    </div>
 
     <div id="plateau_jeu">
         <p id="titre">Bienvenu dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
