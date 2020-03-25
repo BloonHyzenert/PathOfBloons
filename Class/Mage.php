@@ -24,5 +24,4 @@ class Mage extends Hero {
         $obj_hero->set_attaque($arr_data['int_attaque']);
         return $obj_hero;
     }
-    
 }

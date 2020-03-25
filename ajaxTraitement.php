@@ -40,8 +40,8 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
         'mode' => 'choix_chemin', 
         'm_id1' => $int_rand1, 
         'm_id2'=> $int_rand2, 
-        'm_url1' => $arr_monstre[$int_rand1]->get_image(), 
-        'm_url2' => $arr_monstre[$int_rand2]->get_image(), 
+        'monstre_1' => $arr_monstre[$int_rand1]->jsonSerialize(), 
+        'monstre_2' => $arr_monstre[$int_rand2]->jsonSerialize(), 
         'niveau' => $_POST['niveau'] + 1
     ];
 
@@ -73,8 +73,8 @@ if(isset($_POST['niveau']) && $_POST['niveau'] > 0) {
                     'mode' => 'choix_chemin', 
                     'm_id1' => $int_rand1, 
                     'm_id2'=> $int_rand2, 
-                    'm_url1' => $arr_monstre[$int_rand1]->get_image(), 
-                    'm_url2' => $arr_monstre[$int_rand2]->get_image(), 
+                    'monstre_1' => $arr_monstre[$int_rand1]->jsonSerialize(), 
+                    'monstre_2' => $arr_monstre[$int_rand2]->jsonSerialize(), 
                     'niveau' => $_POST['niveau'] + 1
                 ];
             break;
