@@ -11,7 +11,7 @@ class Guerrier extends Hero {
         $this->str_image = "guerrier.jpg";
         $this->int_pv = 200;
         $this->int_pv_actuel = 200;
-        $this->int_attaque = 20;
+        $this->int_attaque = 30;
         $this->int_experience = 0;
         $this->int_niveau = 1;
         $this->int_defense = 10;
@@ -20,7 +20,7 @@ class Guerrier extends Hero {
         $this->int_rage = 0;
 
         $this->learn_sort("Justice", 1, "Inflige des dégats à l'ennemi et augmente votre rage de 10 points");
-        $this->learn_sort("Spin", 1.35, "Inflige des dégats à l'ennemi et augmente votre rage de 30 points");
+        $this->learn_sort("Taillade", 1.45, "Inflige d'important à l'ennemi et augmente votre rage de 30 points");
     }
 
     public static function withArray($arr_data) {
