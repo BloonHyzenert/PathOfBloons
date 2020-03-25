@@ -3,6 +3,10 @@
     padding: 0;
 }
 
+p{
+    text-align: center;
+}
+
 h1 {
     text-align: center;
     font-size: 4em;
@@ -12,6 +16,26 @@ body {
     margin : auto;
     color : white;
     background-image: url("../ressources/BlackBackground.jpg");
+}
+
+#hero{
+    position: fixed;
+    right:0px;
+    top: 0px;
+    background-color: gray;
+    border-radius: 5px;
+    border: solid 2px #025309;
+}
+
+#stat{
+    display: flex;
+    justify-content: space-around;
+    padding: 2px;
+}
+
+.icon{
+    height : 20px;
+    width: 20px;
 }
 
 #titre{
@@ -36,6 +60,10 @@ body {
     max-width: 300px;
     object-fit: contain;
     border: solid 1px  #025309 ;
+}
+
+.blur:hover{
+    opacity: 0.5;
 }
 
 #choice_path{
