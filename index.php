@@ -12,18 +12,32 @@
 <body>
     <h1>Path of Bloons</h1>
     <div id="plateau_jeu">
-        <p id="titre">Bienvenu dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
+        <div id="enTete">
+            <div class="coin">Niveau <p id="niveau" class="coinNumber"> 0</p></div>
+            <p id="titre">Bienvenue dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
+            <div class="coin">Etage <p id="etage" class="coinNumber"> 0</p></div>
+        </div>
         <form id="choice_path" type="POST" action="#">
             <div class="choice" id="gauche">
                 <div id="hero">
-                    <div id="titre2">Hero</div>
+                    <div class="titre2">Hero</div>
                     <div class="container">
                         <div class="col-md-12">
                             <div class="health-box">
                                 <div class="health-bar-red"></div>
                                 <div class="health-bar-blue"></div>
                                 <div class="health-bar"></div>
-                                <div class="health-bar-text"></div>
+                                <div class="health-bar-text" id="pv"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container">
+                        <div class="col-md-12">
+                            <div class="energie-box">
+                                <div class="energie-bar-red"></div>
+                                <div class="energie-bar-blue"></div>
+                                <div class="energie-bar"></div>
+                                <div class="energie-bar-text" id="energie"></div>
                             </div>
                         </div>
                     </div>
@@ -55,14 +69,24 @@
             </div>
             <div class="choice" id="droite">
             <div id="monstre">
-                <div id="titre2">Monstre</div>
+                <div class="titre2">Monstre</div>
                 <div class="container">
                     <div class="col-md-12">
                         <div class="health-box">
                             <div class="health-bar-red"></div>
                             <div class="health-bar-blue"></div>
                             <div class="health-bar"></div>
-                            <div class="health-bar-text"></div>
+                            <div class="health-bar-text" id="pvMonstre"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="energie-box">
+                            <div class="energie-bar-red"></div>
+                            <div class="energie-bar-blue"></div>
+                            <div class="energie-bar"></div>
+                            <div class="energie-bar-text" id="energieMonstre"></div>
                         </div>
                     </div>
                 </div>

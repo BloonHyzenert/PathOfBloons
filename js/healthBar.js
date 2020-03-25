@@ -1,7 +1,6 @@
 $ = jQuery;
 var maxHealth = 500,
   curHealth = maxHealth;
-$(".health-bar-text").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>"+maxHealth + "/" + maxHealth);
 $(".health-bar").css({
   "width": "100%"
 });

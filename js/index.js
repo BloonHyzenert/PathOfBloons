@@ -1,6 +1,7 @@
 function afficher_donnees(arr_retour) {
     //$('#plateau_jeu').empty();
-
+    $('#niveau').html(arr_retour.hero.int_experience);
+    $('#etage').html(arr_retour.niveau);
     if (arr_retour.mode === 'choix_chemin') {
         //Display choix du chemin
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
@@ -10,7 +11,7 @@ function afficher_donnees(arr_retour) {
         $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre_1.str_image);
         $('#milieu button').html(arr_retour.monstre_1.str_nom);
         $('img[alt="pretre"]').attr('src', './ressources/' + arr_retour.monstre_2.str_image);
-        $('#droite button').html(arr_retour.monstre_1.str_nom);
+        $('#droite button').html(arr_retour.monstre_2.str_nom);
         $('#monstre').css('display','none');
         $('#hero').css('display','none');
         $('img[alt="pretre"]').css('display','block');
@@ -23,6 +24,18 @@ function afficher_donnees(arr_retour) {
         $('#hero').css('display','block');
         $('img[alt="pretre"]').css('display','none');
         $('img[alt="guerrier"]').css('display','none');
+        $('#attaque').html(arr_retour.hero.int_attaque);
+        $('#defense').html(arr_retour.hero.int_defense);
+        $('#critique').html(arr_retour.hero.int_critique);
+        $('#esquive').html(arr_retour.hero.int_esquive);
+        $("#pv").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>"+arr_retour.hero.int_pv + "/" + arr_retour.hero.int_pv);
+        $("#energie").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>"+arr_retour.hero.int_pv + "/" + arr_retour.hero.int_pv);
+        $('#attaqueMonstre').html(arr_retour.monstre.int_attaque);
+        $('#defenseMonstre').html(arr_retour.monstre.int_defense);
+        $('#critiqueMonstre').html(arr_retour.monstre.int_critique);
+        $('#esquiveMonstre').html(arr_retour.monstre.int_esquive);
+        $("#pvMonstre").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>"+arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
+        $("#energieMonstre").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>"+arr_retour.monstre.int_pv + "/" + arr_retour.monstre.int_pv);
     }
 }
 

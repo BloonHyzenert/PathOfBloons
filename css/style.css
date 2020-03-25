@@ -60,7 +60,31 @@ body {
     font-size: 1.5em;
     text-align: center;
 }
-#titre2{
+
+#enTete{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.coinNumber{
+    margin-left:2px;
+    font-size:2em;
+    text-align: center;
+}
+.coin{
+    text-align: center;
+    display: inline-block;
+    font-size:1em;
+    background-color: gray;
+    padding: 15px;
+    min-width: 5%;
+    min-height: 5%;
+    white-space: nowrap;
+    border-radius: 100px;
+}
+
+.titre2{
     width : 100%;
     font-size: 1.5em;
     text-align: center;
