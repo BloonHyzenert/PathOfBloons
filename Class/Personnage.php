@@ -31,12 +31,15 @@ abstract class Personnage implements \JsonSerializable {
   public function get_attaque() {
     return $this->int_attaque;
   }
+
   public function get_defense() {
     return $this->int_defense;
   }
+
   public function get_esquive() {
     return $this->int_esquive;
   }
+
   public function get_critique() {
     return $this->int_critique;
   }
@@ -58,6 +61,10 @@ abstract class Personnage implements \JsonSerializable {
   }
 
   public function set_defense($int_defense) {
-    $this->defense = $int_defense;
+    $this->int_defense = $int_defense;
+  }
+
+  public function set_critique($int_critique) {
+    $this->int_critique = $int_critique;
   }
 }
