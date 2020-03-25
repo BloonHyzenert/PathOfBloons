@@ -20,7 +20,7 @@ class Guerrier extends Hero {
         $this->int_rage = 0;
 
         $this->learn_sort("Justice", 1, "Inflige des dégats à l'ennemi et augmente votre rage de 10 points");
-        $this->learn_sort("Spin", 1.25, "Inflige des dégats à l'ennemi et augmente votre rage de 30 points");
+        $this->learn_sort("Spin", 1.35, "Inflige des dégats à l'ennemi et augmente votre rage de 30 points");
     }
 
     public static function withArray($arr_data) {

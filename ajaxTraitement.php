@@ -32,6 +32,10 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0) {
         break;
     }
 
+    foreach($obj_hero->get_sorts() as $sort) {
+        $sort->jsonSerialize();
+    }
+
     $int_rand1 = random_int(0, count($arr_monstre) - 1);
     $int_rand2 = random_int(0, count($arr_monstre) - 1);
 

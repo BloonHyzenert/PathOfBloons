@@ -1,6 +1,6 @@
 <?php
 
-class Sort {
+class Sort implements \JsonSerializable {
 
     protected $str_nom;
     protected $int_degat;
@@ -15,4 +15,9 @@ class Sort {
     public function get_nom() {
         return $this->str_nom;
     }
+
+    final public function jsonSerialize() {
+        return get_object_vars($this);
+    }
+
 }
