@@ -259,7 +259,6 @@ if(isset($_POST['hero'])) {
         $message_combat = $obj_hero->attaquer($obj_monstre, $_POST['choix']);
 
         if($obj_monstre->get_pv_actuel() == 0) {
-
             $obj_hero->gagner_experience($obj_hero, $obj_monstre);
 
             // Nouveau choix monstres
