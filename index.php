@@ -22,7 +22,7 @@
                     <div class="xp-bar-text" id="xp"></div>
                 </div>
             </div>
-            <p id="titre">Bienvenue dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
+            <p id="titre">Bienvenue dans Path of Bloons. Veuillez choisir un personnage parmis les 3 proposés :</p>
             <div class="coin">Etage <p id="etage" class="coinNumber"> 0</p></div>
         </div>
         <form id="choice_path" type="POST" action="#">

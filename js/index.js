@@ -5,6 +5,8 @@ function afficher_donnees(arr_retour) {
     $('.spell1').css('display','none');
     $('.spell2').css('display','none');
     $('.spell3').css('display','none');
+    $('#milieu button').css('background-color','#025309');
+    $('#droite button').css('display','block');
     if (arr_retour.mode === 'choix_hero') {
         //Display choix du hero
         $('#niveau').html(0);
@@ -34,8 +36,8 @@ function afficher_donnees(arr_retour) {
         $('#etage').html(arr_retour.niveau);
         applyChange(arr_retour.hero.int_experience, 100,'','xp');
 
-        $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
-        'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la gloire et la vie éternel ?!');
+        $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offrent à vous !<br>' +
+        'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la gloire et la vie éternelle ?!');
 
         $('img[alt="guerrier"]').attr('src', './ressources/evenement.jpg');
         $('#gauche button').html('Evenement');
@@ -52,7 +54,7 @@ function afficher_donnees(arr_retour) {
         // Display mode combat
         $('#niveau').html(arr_retour.hero.int_niveau);
         $('#etage').html(arr_retour.niveau);
-        $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
+        $('#titre').html('Le teriffiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
 
         //$('#message').html(arr_retour.message['message']);
 
@@ -74,10 +76,16 @@ function afficher_donnees(arr_retour) {
             case "Mage":
                 $('.energie-bar').css('background-color','#0f5291');
                 applyChange(arr_retour.hero.int_mana_actuel, arr_retour.hero.int_mana_max,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                if(arr_retour.hero.int_mana_actuel < 40){
+                    $('#milieu button').css('background-color','gray');
+                }
                 break;
             case "Pretre":
                 $('.energie-bar').css('background-color','gold');
                 applyChange(arr_retour.hero.int_foi_actuel, arr_retour.hero.int_foi_max,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                if(arr_retour.hero.int_foi_actuel < 50){
+                    $('#milieu button').css('background-color','gray');
+                }
                 break;
         }
         $('#attaqueMonstre').html(arr_retour.monstre.int_attaque);
@@ -89,8 +97,12 @@ function afficher_donnees(arr_retour) {
         //applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/energie.png"></img>','energieMonstre');
         $('#energieMonstre').html('');
         $('#gauche button').html('<img class="iconSpell" src="' + arr_retour.hero.arr_sorts[0].str_image + '" title="'+arr_retour.hero.arr_sorts[0].str_effet+'"></img>'+arr_retour.hero.arr_sorts[0].str_nom);
+        $('#gauche button').attr('title', arr_retour.hero.arr_sorts[0].str_effet);
         $('#milieu button').html('<img class="iconSpell" src="' + arr_retour.hero.arr_sorts[1].str_image + '" title="'+arr_retour.hero.arr_sorts[1].str_effet+'"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
-        $('#droite button').html('XXXXXX'/*arr_retour.hero.arr_sorts[2].str_nom*/);
+        $('#milieu button').attr('title', arr_retour.hero.arr_sorts[1].str_effet);
+        $('#droite button').css('display','none');
+        $('#droite button').html(''/*arr_retour.hero.arr_sorts[2].str_nom*/);
+        //$('#droite button').attr('title', arr_retour.hero.arr_sorts[2].str_effet);
     }
     
 }
