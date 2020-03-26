@@ -58,7 +58,7 @@ function afficher_donnees(arr_retour) {
         // Display mode combat
         $('#niveau').html(arr_retour.hero.int_niveau);
         $('#etage').html(arr_retour.niveau);
-        $('#titre').html('Le teriffiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
+        $('#titre').html('Le terrifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
 
         //$('#message').html(arr_retour.message['message']);
 
