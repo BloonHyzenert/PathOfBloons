@@ -212,7 +212,7 @@ if(isset($_POST['hero'])) {
                 $arr_retour = [
                     'mode' => 'choix_hero', 
                     'niveau' => 0,
-                    'message' => $str_message
+                    'message' => "YOU DIED !!"
                 ];
             } else {
                 $arr_retour = [
@@ -220,7 +220,7 @@ if(isset($_POST['hero'])) {
                     'monstre' => $obj_monstre, 
                     'mode' => 'combat', 
                     'niveau' => $_POST['niveau'],
-                    'message' => "YOU DIED !!"
+                    'message' => $str_message
                 ];
             }
         }

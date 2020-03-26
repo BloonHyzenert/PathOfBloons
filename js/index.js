@@ -1,6 +1,6 @@
 function afficher_donnees(arr_retour) {
     
-    afficher_message(arr_retour.afficher_message);
+    afficher_message(arr_retour.message);
     
     $('.spell1').css('display','none');
     $('.spell2').css('display','none');
