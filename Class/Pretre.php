@@ -35,46 +35,54 @@ class Pretre extends Hero {
         $int_degat = 0;
         $str_effet = '';
 
-        if($id_sort == 0) {
-            $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense());
-            if ($this->get_foi_actuel() + 25 > 50)  {
-                $this->set_foi_actuel(50);    
-            } else {
-                $this->set_foi_actuel($this->get_foi_actuel() + 25);
-            }
-        } else if($id_sort == 1) {
-            if ($this->get_foi_actuel() < 50) {
-                $bln_ok = false;
-            } else {
-                $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense());
+        // Gestion de l'esquive
+        $int_random = random_int(0, 100);
+        if($int_random <= $obj_monstre->get_esquive()) {
+            $int_degat = -1;
+
+            if($id_sort == 1) {
                 if ($this->get_foi_actuel() - 50 < 0)  {
                     $this->set_foi_actuel(0);    
                 } else {
                     $this->set_foi_actuel($this->get_foi_actuel() - 50);
                 }
-
-                if($this->get_pv_actuel() + $int_degat > $this->get_pv()) {
-                    $this->set_pv_actuel($this->get_pv());
+            }
+            return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
+        } else {
+            if($id_sort == 0) {
+                $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense());
+                if ($this->get_foi_actuel() + 25 > 50)  {
+                    $this->set_foi_actuel(50);    
                 } else {
-                    $this->set_pv_actuel($this->get_pv_actuel() + $int_degat);
+                    $this->set_foi_actuel($this->get_foi_actuel() + 25);
                 }
-
-                $str_effet = "Vous vous êtes soigné de " . $int_degat;
+            } else if($id_sort == 1) {
+                if ($this->get_foi_actuel() < 50) {
+                    $bln_ok = false;
+                } else {
+                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense());
+                    if ($this->get_foi_actuel() - 50 < 0)  {
+                        $this->set_foi_actuel(0);    
+                    } else {
+                        $this->set_foi_actuel($this->get_foi_actuel() - 50);
+                    }
+    
+                    if($this->get_pv_actuel() + $int_degat > $this->get_pv()) {
+                        $this->set_pv_actuel($this->get_pv());
+                    } else {
+                        $this->set_pv_actuel(round($this->get_pv_actuel() + $int_degat, 0));
+                    }
+    
+                    $str_effet = "Vous vous êtes soigné de " . $int_degat;
+                }
             }
         }
-        
+
         if($bln_ok) {
             // Gestion des degats critique
             $int_random = random_int(0, 100);
             if($int_random < $this->get_critique()) {
                 $int_degat *= 2;
-            }
-
-            // Gestion de l'esquive
-            $int_random = random_int(0, 100);
-            if($int_random < $obj_monstre->get_esquive()) {
-                $int_degat = -1;
-                return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
             }
 
             if($int_degat > 0) {

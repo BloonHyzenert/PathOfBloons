@@ -186,10 +186,7 @@ if(isset($_POST['hero'])) {
 
         if($obj_monstre->get_pv_actuel() == 0) {
 
-            $obj_hero->set_experience($obj_hero->get_experience() + $obj_hero->gagner_experience($obj_monstre));
-            if($obj_hero->get_experience() >= 100) {
-                $obj_hero->nouveau_niveau();
-            }
+            $obj_hero->gagner_experience($obj_hero, $obj_monstre);
 
             // Nouveau choix monstres
             $int_rand1 = random_int(0, count($arr_monstre) - 1);
@@ -203,7 +200,7 @@ if(isset($_POST['hero'])) {
                 'monstre_1' => new Monstre($arr_monstre[$int_rand1]), 
                 'monstre_2' => new Monstre($arr_monstre[$int_rand2]),
                 'niveau' => $_POST['niveau'],
-                'message' => "Vous avez tué le montre !"
+                'message' => "Vous avez tué " . $obj_monstre->get_nom()
             ];
         } else {
 

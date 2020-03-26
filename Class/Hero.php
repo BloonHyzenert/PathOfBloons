@@ -39,8 +39,25 @@ abstract class Hero extends Personnage {
     }
   }
 
-  public function gagner_experience($obj_monstre) {
-    return 100;
+  public function gagner_experience($obj_hero, $obj_monstre) {
+    if($obj_monstre->get_nom() === 'Globloon') {
+      $int_exp = 30;
+    } else if($obj_monstre->get_nom() === 'Dragloon') {
+      $int_exp = 80;
+    } else if($obj_monstre->get_nom() === 'Troloon') {
+      $int_exp = 60;
+    } else if($obj_monstre->get_nom() === 'Slimoon') {
+      $int_exp = 40;
+    } else if($obj_monstre->get_nom() === 'Orcloon') {
+      $int_exp = 50;
+    } else if($obj_monstre->get_nom() === 'Lichloon') {
+      $int_exp = 60;
+    }
+
+    $obj_hero->set_experience($obj_hero->get_experience() + $int_exp);
+    if($obj_hero->get_experience() >= 100) {
+        $obj_hero->nouveau_niveau();
+    }
   }
 
   public function get_sorts() {
