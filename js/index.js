@@ -75,6 +75,9 @@ function afficher_donnees(arr_retour) {
             case "Guerrier":
                 $('.energie-bar').css('background-color','#cc0000');
                 applyChange(arr_retour.hero.int_rage, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                if(arr_retour.hero.arr_sorts[1].int_cooldown > arr_retour.hero.arr_sorts[1].int_cd_done){
+                    $('#milieu button').css('background-color','gray');
+                }
                 break;
             case "Mage":
                 $('.energie-bar').css('background-color','#0f5291');
