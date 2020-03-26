@@ -121,7 +121,7 @@
         </form>
     </div>
     <div id='message'>
-        <div>BLLLLLLOOOOON</div>
+        <div>Path of Bloons</div>
     </div>
 
 
