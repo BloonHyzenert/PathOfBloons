@@ -7,7 +7,7 @@ function afficher_donnees(arr_retour) {
     $('.spell3').css('display','none');
     $('#milieu button').css('background-color','#025309');
     $('#droite button').css('background-color','#025309');
-    $('#droite button').css('display','block');
+    $('#droite button').css('display','flex');
     $('#gauche button').attr('title', '');
     $('#milieu button').attr('title', '');
     $('#droite button').attr('title', '');
@@ -116,7 +116,7 @@ function afficher_donnees(arr_retour) {
         $('#milieu button').html('<img class="iconSpell" src="' + arr_retour.hero.arr_sorts[1].str_image + '" title="'+arr_retour.hero.arr_sorts[1].str_effet+'"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
         $('#milieu button').attr('title', arr_retour.hero.arr_sorts[1].str_effet);
         if(arr_retour.hero.arr_sorts[2] != null){
-            $('#droite button').html(arr_retour.hero.arr_sorts[2].str_nom);
+            $('#droite button').html('<img class="iconSpell" src="' + arr_retour.hero.arr_sorts[2].str_image + '" title="'+arr_retour.hero.arr_sorts[2].str_effet+'"></img>'+arr_retour.hero.arr_sorts[2].str_nom);
             $('#droite button').attr('title', arr_retour.hero.arr_sorts[2].str_effet);
 
         }else{
