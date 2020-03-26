@@ -84,11 +84,12 @@ class Mage extends Hero {
                     $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
                 }
                 if($str_effet != '') {
-                    return ["effet" => $str_effet, "message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
+                    return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie", "effet" => $str_effet];
                 } else {
                     return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
                 }
-            } else if ($int_degat == 0) {
+            } else if ($int_degat != -1) {
+                $int_degat = 0;
                 return ["message" => "Votre attaque n'est pas assez efficace"];
             }
         } else {

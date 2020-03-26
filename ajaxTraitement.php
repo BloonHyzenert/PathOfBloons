@@ -79,16 +79,20 @@ $arr_monstre = [
 
 if(isset($_POST['niveau']) && $_POST['niveau'] == 0 && !isset($_POST['hero'])) {
 
+    $str_message = '';
     //Création du personnage et des monstres
     switch($_POST['choix']) {
         case '0':
             $obj_hero = new Guerrier();
+            $str_message = "Pour la gloire, et l'honneur !";
         break;
         case '1':
             $obj_hero = new Mage();
+            $str_message = "La magie prévaudra !";
         break;
         case '2':
             $obj_hero = new Pretre();
+            $str_message = "Purifions ces infâmes créatures !";
         break;
     }
 
@@ -106,7 +110,8 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0 && !isset($_POST['hero'])) {
         'm_id2'=> $int_rand2, 
         'monstre_1' => new Monstre($arr_monstre[$int_rand1]), 
         'monstre_2' => new Monstre($arr_monstre[$int_rand2]), 
-        'niveau' => $_POST['niveau']
+        'niveau' => $_POST['niveau'],
+        'message' => $str_message
     ];
 
     echo json_encode($arr_retour);
@@ -116,6 +121,9 @@ if(isset($_POST['hero'])) {
 
     $arr_retour = [];
     $message_combat = ['message' => ''];
+    $arr_message = ['In carnage, I bloom, like a flower in the dawn', 'DIE DIE DIE !', "I must destroy even hope.", ""];
+    
+
 
     if($_POST['hero']['str_nom'] === 'Guerrier') { // Constructeurs surchargé
         $obj_hero = Guerrier::withArray($_POST['hero']);
@@ -127,6 +135,8 @@ if(isset($_POST['hero'])) {
 
     if(!isset($_POST['monstre'])) {
         
+        $int_random_message = random_int(0, count($arr_message) - 1);
+
         switch($_POST['choix']) {
             case '0':
                 // Evenement
@@ -134,7 +144,7 @@ if(isset($_POST['hero'])) {
                 // Nouveau choix de monstre
                 $int_rand1 = random_int(0, count($arr_monstre) - 1);
                 $int_rand2 = random_int(0, count($arr_monstre) - 1);
-            
+
                 $arr_retour = [
                     'hero' => $obj_hero->jsonSerialize(), 
                     'mode' => 'choix_chemin', 
@@ -142,7 +152,8 @@ if(isset($_POST['hero'])) {
                     'm_id2'=> $int_rand2, 
                     'monstre_1' => new Monstre($arr_monstre[$int_rand1]), 
                     'monstre_2' => new Monstre($arr_monstre[$int_rand2]), 
-                    'niveau' => $_POST['niveau'] + 1
+                    'niveau' => $_POST['niveau'] + 1,
+                    'message' => $arr_message[$int_random_message]
                 ];
             break;
             case '1':
@@ -152,7 +163,8 @@ if(isset($_POST['hero'])) {
                     'hero' => $obj_hero->jsonSerialize(), 
                     'monstre' => $obj_monstre, 
                     'mode' => 'combat', 
-                    'niveau' => $_POST['niveau'] + 1
+                    'niveau' => $_POST['niveau'] + 1,
+                    'message' => $arr_message[$int_random_message]
                 ];
             break;
             case '2':
@@ -162,7 +174,8 @@ if(isset($_POST['hero'])) {
                     'hero' => $obj_hero->jsonSerialize(), 
                     'monstre' => $obj_monstre, 
                     'mode' => 'combat', 
-                    'niveau' => $_POST['niveau'] + 1
+                    'niveau' => $_POST['niveau'] + 1,
+                    'message' => $arr_message[$int_random_message]
                 ];
             break;
         }    

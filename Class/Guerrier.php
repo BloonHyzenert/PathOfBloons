@@ -66,7 +66,8 @@ class Guerrier extends Hero {
             } else {
                 $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
             }
-        } else if ($int_degat == 0) {
+        } else if ($int_degat != -1) {
+            $int_degat = 0;
             return ["message" => "Votre attaque n'est pas assez efficace"];
         }
 
