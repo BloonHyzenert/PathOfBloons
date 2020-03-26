@@ -122,12 +122,12 @@
   }
 
   .xp-box {
-    position: absolute;
+    /*position: absolute;*/
     border-radius: 5px;
     background-color: #ccc;
     height: 10px;
     width: 50px;
-    margin: 5px;
+    margin: auto;
     margin-top: -4px;
     border: solid 1px #aaa;
   }
