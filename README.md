@@ -38,11 +38,11 @@ Ratio de dégâts augmenter: 1.1 -> 1.2
 ### Taillade
 Ratio de dégâts augmenter: 1.35 -> 1.45
 ### Stats overall
-Defense par niveau augmenter: 5 -> 7 
+Defense par niveau augmenter: 5 -> 7<br>
 PV par niveau diminuer: 70 -> 65 
 
 ## Prêtre
 La classe prêtre est trop polivalente, nous aimons son kit, mais souhaitons rendre le choix du héro moins évident !
 ### Stats overall
-Attaque par niveau diminuer: 15 -> 10 
+Attaque par niveau diminuer: 15 -> 10<br>
 Defense par niveau augmenter: 1 -> 2 
