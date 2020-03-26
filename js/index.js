@@ -6,6 +6,7 @@ function afficher_donnees(arr_retour) {
     $('.spell2').css('display','none');
     $('.spell3').css('display','none');
     $('#milieu button').css('background-color','#025309');
+    $('#droite button').css('background-color','#025309');
     $('#droite button').css('display','block');
     $('#gauche button').attr('title', '');
     $('#milieu button').attr('title', '');
@@ -78,6 +79,14 @@ function afficher_donnees(arr_retour) {
                 if(arr_retour.hero.arr_sorts[1].int_cooldown > arr_retour.hero.arr_sorts[1].int_cd_done){
                     $('#milieu button').css('background-color','gray');
                 }
+                if(arr_retour.hero.arr_sorts[2] != null){
+                    if(arr_retour.hero.arr_sorts[2].int_cooldown > arr_retour.hero.arr_sorts[2].int_cd_done){
+                        $('#droite button').css('background-color','gray');
+                    }
+                    else if( 3 > arr_retour.hero.arr_sorts[2].int_cd_done){
+                        $('#droite button').css('background-color','red');
+                    }
+                }
                 break;
             case "Mage":
                 $('.energie-bar').css('background-color','#0f5291');
@@ -106,9 +115,14 @@ function afficher_donnees(arr_retour) {
         $('#gauche button').attr('title', arr_retour.hero.arr_sorts[0].str_effet);
         $('#milieu button').html('<img class="iconSpell" src="' + arr_retour.hero.arr_sorts[1].str_image + '" title="'+arr_retour.hero.arr_sorts[1].str_effet+'"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
         $('#milieu button').attr('title', arr_retour.hero.arr_sorts[1].str_effet);
-        $('#droite button').css('display','none');
-        $('#droite button').html(''/*arr_retour.hero.arr_sorts[2].str_nom*/);
-        //$('#droite button').attr('title', arr_retour.hero.arr_sorts[2].str_effet);
+        if(arr_retour.hero.arr_sorts[2] != null){
+            $('#droite button').html(arr_retour.hero.arr_sorts[2].str_nom);
+            $('#droite button').attr('title', arr_retour.hero.arr_sorts[2].str_effet);
+
+        }else{
+            $('#droite button').css('display','none');
+            $('#droite button').html('');
+        }
     }
     
 }
