@@ -68,18 +68,18 @@ class Guerrier extends Hero {
                 }
             }
         }
+       
+        // Gestion de la rage
+        if($this->get_rage() >= 100) {
+            $this->set_rage(0);
+            $int_degat *= 3;
+        }
 
         //Gestion de l'esquive
         $int_random = random_int(0, 100);
         if($int_random <= $obj_monstre->get_esquive()) {
             $int_degat = -1;
             return ["message" => $obj_monstre->get_nom() . " esquiver votre attaque !!"];
-        }
-        
-        // Gestion de la rage
-        if($this->get_rage() >= 100) {
-            $this->set_rage(0);
-            $int_degat *= 3;
         }
 
         if($int_degat > 0) {
