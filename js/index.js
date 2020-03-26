@@ -94,11 +94,8 @@ function afficher_donnees(arr_retour) {
 }
 
 function afficher_message(str,time = 2000){
-    $('#message').html(str);
-    $('#message div').css('background-image','url("../ressources/GreenBackground.jpg")');
     $('#message').css('display','flex');
-    $('#message div').css('padding','30px');
-    $('#message div').css('border','solid 4px black');
+    $('#message div').html(str);
     $('#message').fadeOut(time);
     setTimeout(function(){ $('#message').css('display','none'); }, time);
 }

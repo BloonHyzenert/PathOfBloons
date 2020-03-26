@@ -160,6 +160,8 @@ body {
 
 #message div{
     background-image: url("../ressources/GreenBackground.jpg");
+    border: solid 4px black;
+    padding: 20px;
 }
 
 .noir{
