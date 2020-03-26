@@ -9,19 +9,8 @@ require_once 'Class/Pretre.php';
 require_once 'Class/Monstre.php';
 require_once 'Class/Sort.php';
 
-$arr_monstre = [
+$arr_monstre_superieur = [
     0 => [
-        'str_nom' => 'Globloon',
-        'str_image' => 'gobelin.jpg',
-        'int_pv' => 60, 
-        'int_pv_actuel' => 60, 
-        'int_attaque' => 20, 
-        'int_defense' => 0, 
-        'int_esquive' => 40, 
-        'int_critique' => 10
-    ],
-
-    1 => [
         'str_nom' => 'Dragloon',
         'str_image' => 'dragon.jpg',
         'int_pv' => 200, 
@@ -32,7 +21,7 @@ $arr_monstre = [
         'int_critique' => 50
     ],
 
-    2 => [
+    1 => [
         'str_nom' => 'Troloon',
         'str_image' => 'troll.jpg',
         'int_pv' => 300, 
@@ -40,37 +29,49 @@ $arr_monstre = [
         'int_attaque' => 30, 
         'int_defense' => 30, 
         'int_esquive' => 0, 
-        'int_critique' => 0
-    ],
-
-    3 => [
-        'str_nom' => 'Slimoon',
-        'str_image' => 'slime.jpg',
-        'int_pv' => 30, 
-        'int_pv_actuel' => 30, 
-        'int_attaque' => 15, 
-        'int_defense' => 0, 
-        'int_esquive' => 0, 
         'int_critique' => 10
     ],
 
-    4 => [
-        'str_nom' => 'Orcloon',
-        'str_image' => 'orc.jpg',
-        'int_pv' => 125, 
-        'int_pv_actuel' => 125, 
-        'int_attaque' => 25, 
-        'int_defense' => 10, 
-        'int_esquive' => 10, 
-        'int_critique' => 10
-    ],
-
-    5 => [
+    2 => [
         'str_nom' => 'Lichloon',
         'str_image' => 'liche.jpg',
         'int_pv' => 175, 
         'int_pv_actuel' => 175, 
         'int_attaque' => 45, 
+        'int_defense' => 10, 
+        'int_esquive' => 10, 
+        'int_critique' => 10
+    ],
+];
+$arr_monstre_inferieur = [
+    0 => [
+        'str_nom' => 'Globloon',
+        'str_image' => 'gobelin.jpg',
+        'int_pv' => 50, 
+        'int_pv_actuel' => 50, 
+        'int_attaque' => 15, 
+        'int_defense' => 3, 
+        'int_esquive' => 40, 
+        'int_critique' => 10
+    ],
+
+    1 => [
+        'str_nom' => 'Slimoon',
+        'str_image' => 'slime.jpg',
+        'int_pv' => 80, 
+        'int_pv_actuel' => 80, 
+        'int_attaque' => 20, 
+        'int_defense' => 5, 
+        'int_esquive' => 0, 
+        'int_critique' => 20
+    ],
+
+    2 => [
+        'str_nom' => 'Orcloon',
+        'str_image' => 'orc.jpg',
+        'int_pv' => 125, 
+        'int_pv_actuel' => 125, 
+        'int_attaque' => 25, 
         'int_defense' => 10, 
         'int_esquive' => 10, 
         'int_critique' => 10
@@ -100,16 +101,16 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0 && !isset($_POST['hero'])) {
         $sort->jsonSerialize();
     }
 
-    $int_rand1 = random_int(0, count($arr_monstre) - 1);
-    $int_rand2 = random_int(0, count($arr_monstre) - 1);
+    $int_rand1 = random_int(0, count($arr_monstre_inferieur) - 1);
+    $int_rand2 = random_int(0, count($arr_monstre_superieur) - 1);
 
     $arr_retour = [
         'hero' => $obj_hero->jsonSerialize(), 
         'mode' => 'choix_chemin', 
         'm_id1' => $int_rand1, 
         'm_id2'=> $int_rand2, 
-        'monstre_1' => new Monstre($arr_monstre[$int_rand1]), 
-        'monstre_2' => new Monstre($arr_monstre[$int_rand2]), 
+        'monstre_1' => new Monstre($arr_monstre_inferieur[$int_rand1]), 
+        'monstre_2' => new Monstre($arr_monstre_superieur[$int_rand2]), 
         'niveau' => $_POST['niveau'],
         'message' => $str_message
     ];
@@ -140,23 +141,23 @@ if(isset($_POST['hero'])) {
                 // Evenement
 
                 // Nouveau choix de monstre
-                $int_rand1 = random_int(0, count($arr_monstre) - 1);
-                $int_rand2 = random_int(0, count($arr_monstre) - 1);
+                $int_rand1 = random_int(0, count($arr_monstre_inferieur) - 1);
+                $int_rand2 = random_int(0, count($arr_monstre_superieur) - 1);
 
                 $arr_retour = [
                     'hero' => $obj_hero->jsonSerialize(), 
                     'mode' => 'choix_chemin', 
                     'm_id1' => $int_rand1, 
                     'm_id2'=> $int_rand2, 
-                    'monstre_1' => new Monstre($arr_monstre[$int_rand1]), 
-                    'monstre_2' => new Monstre($arr_monstre[$int_rand2]), 
+                    'monstre_1' => new Monstre($arr_monstre_inferieur[$int_rand1]), 
+                    'monstre_2' => new Monstre($arr_monstre_superieur[$int_rand2]), 
                     'niveau' => $_POST['niveau'] + 1,
                     'message' => $arr_message[$int_random_message]
                 ];
             break;
             case '1':
                 // Choix monstre 1
-                $obj_monstre = new Monstre($arr_monstre[$_POST['id_monstre']], $_POST['niveau']);
+                $obj_monstre = new Monstre($arr_monstre_inferieur[$_POST['id_monstre']], $_POST['niveau']);
                 $arr_retour = [
                     'hero' => $obj_hero->jsonSerialize(), 
                     'monstre' => $obj_monstre, 
@@ -167,7 +168,7 @@ if(isset($_POST['hero'])) {
             break;
             case '2':
                 // Choix monstre 2
-                $obj_monstre = new Monstre($arr_monstre[$_POST['id_monstre']], $_POST['niveau']);
+                $obj_monstre = new Monstre($arr_monstre_superieur[$_POST['id_monstre']], $_POST['niveau']);
                 $arr_retour = [
                     'hero' => $obj_hero->jsonSerialize(), 
                     'monstre' => $obj_monstre, 
@@ -189,16 +190,16 @@ if(isset($_POST['hero'])) {
             $obj_hero->gagner_experience($obj_hero, $obj_monstre);
 
             // Nouveau choix monstres
-            $int_rand1 = random_int(0, count($arr_monstre) - 1);
-            $int_rand2 = random_int(0, count($arr_monstre) - 1);
+            $int_rand1 = random_int(0, count($arr_monstre_inferieur) - 1);
+            $int_rand2 = random_int(0, count($arr_monstre_superieur) - 1);
 
             $arr_retour = [
                 'hero' => $obj_hero->jsonSerialize(), 
                 'mode' => 'choix_chemin', 
                 'm_id1' => $int_rand1, 
                 'm_id2'=> $int_rand2, 
-                'monstre_1' => new Monstre($arr_monstre[$int_rand1]), 
-                'monstre_2' => new Monstre($arr_monstre[$int_rand2]),
+                'monstre_1' => new Monstre($arr_monstre_inferieur[$int_rand1]), 
+                'monstre_2' => new Monstre($arr_monstre_superieur[$int_rand2]),
                 'niveau' => $_POST['niveau'],
                 'message' => "Vous avez tué " . $obj_monstre->get_nom()
             ];
