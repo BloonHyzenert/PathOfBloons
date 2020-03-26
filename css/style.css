@@ -153,7 +153,11 @@ body {
     width: 100vw;
     height: 100vh;
     font-size: 4em;
-    color: green;
+    color: black;
+}
+
+.noir{
+    background-color: black!important;
 }
 
 .blur:hover{

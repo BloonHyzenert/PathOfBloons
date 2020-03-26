@@ -1,18 +1,37 @@
 function afficher_donnees(arr_retour) {
     
-    $('#niveau').html(arr_retour.hero.int_niveau);
-    $('#etage').html(arr_retour.niveau);
+    afficher_message(arr_retour.message);
+    
     $('.spell1').css('display','none');
     $('.spell2').css('display','none');
     $('.spell3').css('display','none');
-    $('#message').css('display','flex');
-    
     if (arr_retour.mode === 'choix_hero') {
         //Display choix du hero
+        $('#niveau').html(0);
+        $('#etage').html(arr_retour.niveau);
+        $('#titre').html('Bienvenue dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :');
+
+        $('.spell1').css('display','block');
+        $('.spell2').css('display','block');
+        $('.spell3').css('display','block');
+
+        $('img[alt="guerrier"]').attr('src', './ressources/guerrier.jpg');
+        $('#gauche button').html('Guerrier');
+        $('img[alt="mage"]').attr('src', './ressources/mage.jpg');
+        $('#milieu button').html('Mage');
+        $('img[alt="pretre"]').attr('src', './ressources/pretre.jpg');
+        $('#droite button').html('Pretre');
+        $('#monstre').css('display','none');
+        $('#hero').css('display','none');
+        $('img[alt="pretre"]').css('display','block');
+        $('img[alt="guerrier"]').css('display','block');
 
 
     } else if (arr_retour.mode === 'choix_chemin') {
         // Display choix du chemin
+        $('#niveau').html(arr_retour.hero.int_niveau);
+        $('#etage').html(arr_retour.niveau);
+
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
         'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la gloire et la vie éternel ?!');
 
@@ -29,6 +48,8 @@ function afficher_donnees(arr_retour) {
 
     } else if (arr_retour.mode === 'combat') {
         // Display mode combat
+        $('#niveau').html(arr_retour.hero.int_niveau);
+        $('#etage').html(arr_retour.niveau);
         $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
 
         //$('#message').html(arr_retour.message['message']);
@@ -45,17 +66,18 @@ function afficher_donnees(arr_retour) {
         applyChange(arr_retour.hero.int_pv_actuel, arr_retour.hero.int_pv,'<img class="iconPV" src="./ressources/pointvie.svg"></img>','pv');
         switch(arr_retour.hero.str_nom){
             case "Guerrier":
+                $('.energie-bar').css('background-color','#cc0000');
                 applyChange(arr_retour.hero.int_rage, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
             case "Mage":
+                $('.energie-bar').css('background-color','#0f5291');
                 applyChange(arr_retour.hero.int_mana_actuel, arr_retour.hero.int_mana_max,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
             case "Pretre":
-                applyChange(arr_retour.hero.int_foi, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                $('.energie-bar').css('background-color','gold');
+                applyChange(arr_retour.hero.int_foi, 50,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
         }
-        //$("#pv").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>" + arr_retour.hero.int_pv_actuel + "/" + arr_retour.hero.int_pv);
-        //$("#energie").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>" + arr_retour.hero.int_pv_actuel + "/" + arr_retour.hero.int_pv);
         $('#attaqueMonstre').html(arr_retour.monstre.int_attaque);
         $('#defenseMonstre').html(arr_retour.monstre.int_defense);
         $('#critiqueMonstre').html(arr_retour.monstre.int_critique);
@@ -63,16 +85,19 @@ function afficher_donnees(arr_retour) {
         
         applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/pointvie.svg"></img>','pvMonstre');
         applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/energie.png"></img>','energieMonstre');
-        //$("#pvMonstre").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>" + arr_retour.monstre.int_pv_actuel + "/" + arr_retour.monstre.int_pv);
-        //$("#energieMonstre").html("<img class=\"iconPV\" src=\"./ressources/energie.png\"></img>" + arr_retour.monstre.int_pv_actuel + "/" + arr_retour.monstre.int_pv);
-        
+        $('#energieMonstre').html('');
         $('#gauche button').html('<img class="iconSpell" src="./ressources/justice.png" title="'+arr_retour.hero.arr_sorts[0].str_effet+'"></img>'+arr_retour.hero.arr_sorts[0].str_nom);
         $('#milieu button').html('<img class="iconSpell" src="./ressources/justice.png" title="'+arr_retour.hero.arr_sorts[1].str_effet+'"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
         $('#droite button').html('XXXXXX'/*arr_retour.hero.arr_sorts[2].str_nom*/);
     }
-    $('#message').fadeOut(2000);
-    setTimeout(function(){ $('#message').css('display','none'); }, 2000);
     
+}
+
+function afficher_message(str,time = 1500){
+    $('#message').html(str);
+    $('#message').css('display','flex');
+    $('#message').fadeOut(time);
+    setTimeout(function(){ $('#message').css('display','none'); }, time);
 }
 
 $(document).ready(function() {
