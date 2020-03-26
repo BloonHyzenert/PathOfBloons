@@ -10,8 +10,8 @@ class Monstre extends Personnage implements \JsonSerializable {
 
     $this->int_pv = $arr_data['int_pv'] + 10 * $int_niveau;
     $this->int_pv_actuel = $arr_data['int_pv_actuel'] + 10 * $int_niveau;
-    $this->int_attaque = $arr_data['int_attaque'] + 3 * $int_niveau;
-    $this->int_defense = $arr_data['int_defense'] + 2 * $int_niveau;
+    $this->int_attaque = $arr_data['int_attaque'] + 2 * $int_niveau;
+    $this->int_defense = $arr_data['int_defense'] + 1 * $int_niveau;
     $this->int_esquive = $arr_data['int_esquive'];
     $this->int_critique = $arr_data['int_critique'];
     $this->int_experience = $arr_data['int_experience'];
