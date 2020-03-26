@@ -29,54 +29,58 @@ class Guerrier extends Hero {
     }
  
     public function attaquer($obj_monstre, $id_sort) {
+        
         $int_random = random_int(0, 100);
+        if($int_random < $this->get_critique()) { // Gestion du critique 
+            if($id_sort == 0) {
+                $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
+                if($this->get_sorts()[1]->get_cd_done() > $this->get_sorts()[1]->get_cooldown()) {
+                    $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cooldown());
+                }
+
+                $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense()) * 2;
+                $this->set_rage($this->get_rage() + 25);
+            } else if($id_sort == 1) {
+                if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
+                    $this->get_sorts()[$id_sort]->set_cd_done(0);
+                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7) * 2;
+                    $this->set_rage($this->get_rage() + 50);
+                } else {
+                    return ["error" => "Le sort n'est pas encore prêt !"];
+                }
+            }
+        } else {
+            if($id_sort == 0) {
+                $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
+                if($this->get_sorts()[1]->get_cd_done() > $this->get_sorts()[1]->get_cooldown()) {
+                    $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cooldown());
+                }
+
+                $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense();
+                $this->set_rage($this->get_rage() + 25);
+            } else if($id_sort == 1) {
+                if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
+                    $this->get_sorts()[$id_sort]->set_cd_done(0);
+                    $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7;
+                    $this->set_rage($this->get_rage() + 50);
+                } else {
+                    return ["error" => "Le sort n'est pas encore prêt !"];
+                }
+            }
+        }
 
         //Gestion de l'esquive
         $int_random = random_int(0, 100);
         if($int_random <= $obj_monstre->get_esquive()) {
             $int_degat = -1;
-            if($id_sort == 1) {
-                $this->get_sorts()[$id_sort]->set_cd_done($this->get_sorts()[1]->get_cd_done());
-            }
             return ["message" => $obj_monstre->get_nom() . " esquiver votre attaque !!"];
-        } else {
-            if($int_random < $this->get_critique()) { // Gestion du critique 
-                if($id_sort == 0) {
-                    $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
-                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense()) * 2;
-                    $this->set_rage($this->get_rage() + 25);
-                } else if($id_sort == 1) {
-                    if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
-                        $this->get_sorts()[$id_sort]->set_cd_done(0);
-                        $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7) * 2;
-                        $this->set_rage($this->get_rage() + 50);
-                    } else {
-                        return ["error" => "Le sort n'est pas encore prêt !"];
-                    }
-                }
-            } else {
-                if($id_sort == 0) {
-                    $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
-                    $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense();
-                    $this->set_rage($this->get_rage() + 25);
-                } else if($id_sort == 1) {
-                    if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
-                        $this->get_sorts()[$id_sort]->set_cd_done(0);
-                        $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7;
-                        $this->set_rage($this->get_rage() + 50);
-                    } else {
-                        return ["error" => "Le sort n'est pas encore prêt !"];
-                    }
-                }
-            }
         }
-
+        
         // Gestion de la rage
         if($this->get_rage() >= 100) {
             $this->set_rage(0);
             $int_degat *= 3;
         }
-
 
         if($int_degat > 0) {
             if($obj_monstre->get_pv_actuel() - $int_degat < 0) {
@@ -91,7 +95,7 @@ class Guerrier extends Hero {
 
         return ["message" => $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
     }
-
+    
     public function set_rage($int_rage) {
         $this->int_rage = $int_rage;
     }
