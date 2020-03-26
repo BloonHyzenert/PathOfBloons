@@ -38,7 +38,7 @@ class Guerrier extends Hero {
             if($id_sort == 1) {
                 $this->get_sorts()[$id_sort]->set_cd_done(0);
             }
-            return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
+            return ["message" => $obj_monstre->get_nom() . " esquiver votre attaque !!"];
         } else {
             if($int_random < $this->get_critique()) { // Gestion du critique 
                 if($id_sort == 0) {
@@ -89,7 +89,7 @@ class Guerrier extends Hero {
             return ["message" => "Votre attaque n'est pas assez efficace"];
         }
 
-        return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
+        return ["message" => $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
     }
 
     public function set_rage($int_rage) {

@@ -66,7 +66,7 @@ class Mage extends Hero {
             $int_random = random_int(0, 100);
             if($int_random < $obj_monstre->get_esquive()) {
                 $int_degat = -1;
-                return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
+                return ["message" => $obj_monstre->get_nom() . " esquiver votre attaque !!"];
             } else {
                 // Gestion du gêle
                 $int_random = random_int(0, 100);
@@ -84,9 +84,9 @@ class Mage extends Hero {
                     $obj_monstre->set_pv_actuel(round($obj_monstre->get_pv_actuel() - $int_degat, 0));
                 }
                 if($str_effet != '') {
-                    return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie", "effet" => $str_effet];
+                    return ["message" => $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie", "effet" => $str_effet];
                 } else {
-                    return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
+                    return ["message" => $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
                 }
             } else if ($int_degat != -1) {
                 $int_degat = 0;

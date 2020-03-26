@@ -18,7 +18,8 @@ $arr_monstre_superieur = [
         'int_attaque' => 50, 
         'int_defense' => 30, 
         'int_esquive' => 10, 
-        'int_critique' => 50
+        'int_critique' => 50,
+        'int_experience' => 80
     ],
 
     1 => [
@@ -29,7 +30,8 @@ $arr_monstre_superieur = [
         'int_attaque' => 30, 
         'int_defense' => 30, 
         'int_esquive' => 0, 
-        'int_critique' => 10
+        'int_critique' => 10,
+        'int_experience' => 60
     ],
 
     2 => [
@@ -40,7 +42,32 @@ $arr_monstre_superieur = [
         'int_attaque' => 45, 
         'int_defense' => 10, 
         'int_esquive' => 10, 
-        'int_critique' => 10
+        'int_critique' => 10,
+        'int_experience' => 65
+    ],
+
+    3 => [
+        'str_nom' => 'Demnoon',
+        'str_image' => 'demon.jpg',
+        'int_pv' => 350, 
+        'int_pv_actuel' => 350, 
+        'int_attaque' => 60, 
+        'int_defense' => 20, 
+        'int_esquive' => 5, 
+        'int_critique' => 20,
+        'int_experience' => 75
+    ],
+
+    4 => [
+        'str_nom' => 'Ogroon',
+        'str_image' => 'ogre.jpg',
+        'int_pv' => 355, 
+        'int_pv_actuel' => 355, 
+        'int_attaque' => 15, 
+        'int_defense' => 35, 
+        'int_esquive' => 0, 
+        'int_critique' => 0,
+        'int_experience' => 45
     ],
 ];
 
@@ -53,7 +80,8 @@ $arr_monstre_inferieur = [
         'int_attaque' => 15, 
         'int_defense' => 3, 
         'int_esquive' => 40, 
-        'int_critique' => 10
+        'int_critique' => 10,
+        'int_experience' => 25
     ],
 
     1 => [
@@ -64,7 +92,8 @@ $arr_monstre_inferieur = [
         'int_attaque' => 20, 
         'int_defense' => 5, 
         'int_esquive' => 0, 
-        'int_critique' => 20
+        'int_critique' => 20,
+        'int_experience' => 30
     ],
 
     2 => [
@@ -75,7 +104,44 @@ $arr_monstre_inferieur = [
         'int_attaque' => 25, 
         'int_defense' => 10, 
         'int_esquive' => 10, 
-        'int_critique' => 10
+        'int_critique' => 10,
+        'int_experience' => 35
+    ],
+
+    3 => [
+        'str_nom' => 'Squelettoon',
+        'str_image' => 'squelette.jpg',
+        'int_pv' => 100, 
+        'int_pv_actuel' => 100, 
+        'int_attaque' => 20, 
+        'int_defense' => 5, 
+        'int_esquive' => 5, 
+        'int_critique' => 15,
+        'int_experience' => 40
+    ],
+
+    4 => [
+        'str_nom' => 'Spectroon',
+        'str_image' => 'spectre.jpg',
+        'int_pv' => 10, 
+        'int_pv_actuel' => 10, 
+        'int_attaque' => 25, 
+        'int_defense' => 0, 
+        'int_esquive' => 75, 
+        'int_critique' => 15,
+        'int_experience' => 30
+    ],
+
+    5 => [
+        'str_nom' => 'Chienoon',
+        'str_image' => 'chien.jpg',
+        'int_pv' => 150, 
+        'int_pv_actuel' => 150, 
+        'int_attaque' => 25, 
+        'int_defense' => 20, 
+        'int_esquive' => 10, 
+        'int_critique' => 10,
+        'int_experience' => 40
     ],
 ];
 

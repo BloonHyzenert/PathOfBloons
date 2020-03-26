@@ -14,6 +14,7 @@ class Monstre extends Personnage implements \JsonSerializable {
     $this->int_defense = $arr_data['int_defense'] + 2 * $int_niveau;
     $this->int_esquive = $arr_data['int_esquive'];
     $this->int_critique = $arr_data['int_critique'];
+    $this->int_experience = $arr_data['int_experience'];
   }
 
   public static function withArray($arr_data) {
@@ -46,4 +47,8 @@ class Monstre extends Personnage implements \JsonSerializable {
       return "Le " . $obj_hero->get_nom() . " a perdu " . $int_degat . " points de vie";
     }
   } 
+
+  public function get_experience() {
+    return $this->int_experience;
+  }
 }
