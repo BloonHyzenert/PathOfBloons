@@ -115,6 +115,8 @@ if(isset($_POST['niveau']) && $_POST['niveau'] == 0 && !isset($_POST['hero'])) {
 if(isset($_POST['hero'])) { 
 
     $arr_retour = [];
+    $message_combat = ['message' => ''];
+
     if($_POST['hero']['str_nom'] === 'Guerrier') { // Constructeurs surchargé
         $obj_hero = Guerrier::withArray($_POST['hero']);
     } else if($_POST['hero']['str_nom'] === 'Mage') {
@@ -169,11 +171,11 @@ if(isset($_POST['hero'])) {
         $obj_monstre = Monstre::withArray($_POST['monstre']);
 
         //Combat 
-        $obj_hero->attaquer($obj_monstre, $_POST['choix']);
+        $message_combat = $obj_hero->attaquer($obj_monstre, $_POST['choix']);
 
         if($obj_monstre->get_pv_actuel() == 0) {
 
-            $obj_hero->set_experience($obj_hero->get_experience() + 100);
+            $obj_hero->set_experience($obj_hero->get_experience() + 0);
             if($obj_hero->get_experience() >= 100) {
                 $obj_hero->nouveau_niveau();
             }
@@ -193,13 +195,33 @@ if(isset($_POST['hero'])) {
             ];
         } else {
 
-            $obj_monstre->attaquer($obj_hero);
+            if(!isset($message_combat['error']) && !isset($message_combat['effet'])) {
+                $obj_monstre->attaquer($obj_hero);
+            }
+
+            if(isset($message_combat['error'])) {
+                $str_message = $message_combat['error'];
+            } else if (isset($message_combat['effet'])) {
+                $str_message = $message_combat['message'] . " " . $message_combat['effet'];
+            } else {
+                $str_message = $message_combat['message']; 
+            }
 
             if($obj_hero->get_pv_actuel() == 0) {
                 //Choix du perso
-                $arr_retour = ['mode' => 'choix_hero', 'niveau' => 0];
+                $arr_retour = [
+                    'mode' => 'choix_hero', 
+                    'niveau' => 0,
+                    'message' => $str_message
+                ];
             } else {
-                $arr_retour = ['hero' => $obj_hero->jsonSerialize(), 'monstre' => $obj_monstre, 'mode' => 'combat', 'niveau' => $_POST['niveau']];
+                $arr_retour = [
+                    'hero' => $obj_hero->jsonSerialize(), 
+                    'monstre' => $obj_monstre, 
+                    'mode' => 'combat', 
+                    'niveau' => $_POST['niveau'],
+                    'message' => "YOU DIED !!"
+                ];
             }
         }
     }

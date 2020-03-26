@@ -66,6 +66,8 @@ class Guerrier extends Hero {
                 $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
             }
         }
+
+        return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
     }
 
     public function set_rage($int_rage) {

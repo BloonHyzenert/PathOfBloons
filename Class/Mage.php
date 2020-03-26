@@ -4,29 +4,109 @@ require_once 'Hero.php';
 
 class Mage extends Hero {
 
-    protected $int_mana;
+    protected $int_mana_max;
+    protected $int_mana_actuel;
 
-    public function __construct() {
+    public function __construct($int_pv = 150, $int_pv_actuel = 150, $int_attaque = 30, $int_experience = 0, $int_niveau = 1, $int_defense = 0, $int_mana_max = 100, $int_mana_actuel = 100) {
         $this->str_nom = "Mage";
         $this->str_image = "mage.jpg";
-        $this->int_pv = 150;
-        $this->int_pv_actuel = 150;
-        $this->int_attaque = 30;
-        $this->int_experience = 0;
-        $this->int_niveau = 1;
-        $this->int_defense = 0;
+        $this->int_pv = $int_pv;
+        $this->int_pv_actuel = $int_pv_actuel;
+        $this->int_attaque = $int_attaque;
+        $this->int_experience = $int_experience;
+        $this->int_niveau = $int_niveau;
+        $this->int_defense = $int_defense;
         $this->int_esquive = 20;
         $this->int_critique = 30;
-        $this->int_mana = 100;
-        
+        $this->int_mana_max = $int_mana_max;
+        $this->int_mana_actuel = $int_mana_actuel;
+
         $this->learn_sort("Engelure", 1, "Inflige des dégats à l'ennemi, augmente votre mana de 15 points (A une faible chance de gelée pour 1 tour)");
-        $this->learn_sort("Blizzard", 1.55, "Inflige des gros dégats à l'ennemi, coûte 40 points de mana (Gêle pendant 1 tour)");
+        $this->learn_sort("Blizzard", 1.85, "Inflige des gros dégats à l'ennemi, coûte 40 points de mana (Gêle pendant 1 tour)");
     }
 
     public static function withArray($arr_data) {
-        $obj_hero = new self();
-        $obj_hero->set_pv_actuel($arr_data['int_pv_actuel']);
-        $obj_hero->set_attaque($arr_data['int_attaque']);
+        $obj_hero = new self($arr_data['int_pv'], $arr_data['int_pv_actuel'], $arr_data['int_attaque'], $arr_data['int_experience'], $arr_data['int_niveau'], $arr_data['int_defense'], $arr_data['int_mana_max'], $arr_data['int_mana_actuel']);
         return $obj_hero;
+    }
+
+    public function attaquer($obj_monstre, $id_sort) {
+        $bln_ok = true;
+        $int_degat = 0;
+        $str_effet = '';
+
+        if($id_sort == 0) {
+            $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense());
+            if ($this->get_mana_actuel() + 15 > 100)  {
+                $this->set_mana_actuel(100);    
+            } else {
+                $this->set_mana_actuel($this->get_mana_actuel() + 15);
+            }
+        } else if($id_sort == 1) {
+            if ($this->get_mana_actuel() < 40) {
+                $bln_ok = false;
+            } else {
+                $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense());
+                if ($this->get_mana_actuel() - 40 < 0)  {
+                    $this->set_mana_actuel(0);    
+                } else {
+                    $this->set_mana_actuel($this->get_mana_actuel() - 40);
+                }
+            }
+        }
+        
+        if($bln_ok) {
+            // Gestion des degats critique
+            $int_random = random_int(0, 100);
+            if($int_random < $this->get_critique()) {
+                $int_degat *= 2;
+            }
+
+            // Gestion de l'esquive
+            $int_random = random_int(0, 100);
+            if($int_random < $obj_monstre->get_esquive()) {
+                $int_degat = 0;
+                return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
+            } else {
+                // Gestion du gêle
+                $int_random = random_int(0, 100);
+                if($id_sort == 0 && $int_random < 15) {
+                    $str_effet = "Vous avez gelé l'ennemi !! ";
+                } else if ($id_sort == 1) {
+                    $str_effet = "Vous avez gelé l'ennemi !! "; 
+                }
+            }
+
+            if($int_degat > 0) {
+                if($obj_monstre->get_pv_actuel() - $int_degat < 0) {
+                    $obj_monstre->set_pv_actuel(0);    
+                } else {
+                    $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
+                }
+                if($str_effet != '') {
+                    return ["effet" => $str_effet, "message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
+                } else {
+                    return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
+                }
+            }  
+        } else {
+            return ["error" => "Pas assez de mana pour lancer le sort"];
+        }
+    }
+
+    public function set_mana_max($int_mana) {
+        $this->int_mana_max = $int_mana;
+    }
+
+    public function get_mana_max() {
+        return $this->int_mana_max;
+    }
+
+    public function set_mana_actuel($int_mana) {
+        $this->int_mana_actuel = $int_mana;
+    }
+
+    public function get_mana_actuel() {
+        return $this->int_mana_actuel;
     }
 }

@@ -6,7 +6,7 @@ function afficher_donnees(arr_retour) {
     $('.spell2').css('display','none');
     $('.spell3').css('display','none');
     $('#message').css('display','flex');
-
+    
     if (arr_retour.mode === 'choix_hero') {
         //Display choix du hero
 
@@ -31,6 +31,8 @@ function afficher_donnees(arr_retour) {
         // Display mode combat
         $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
 
+        //$('#message').html(arr_retour.message['message']);
+
         $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre.str_image);
         $('#monstre').css('display','block');
         $('#hero').css('display','block');
@@ -46,7 +48,7 @@ function afficher_donnees(arr_retour) {
                 applyChange(arr_retour.hero.int_rage, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
             case "Mage":
-                applyChange(arr_retour.hero.int_mana, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                applyChange(arr_retour.hero.int_mana_actuel, arr_retour.hero.int_mana_max,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
             case "Pretre":
                 applyChange(arr_retour.hero.int_foi, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
