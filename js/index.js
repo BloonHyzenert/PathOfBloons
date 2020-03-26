@@ -94,12 +94,22 @@ function afficher_donnees(arr_retour) {
                 if(arr_retour.hero.int_mana_actuel < 40){
                     $('#milieu button').css('background-color','gray');
                 }
+                if(arr_retour.hero.arr_sorts[2] != null){
+                    if(arr_retour.hero.arr_sorts[2].int_cooldown > arr_retour.hero.arr_sorts[2].int_cd_done){
+                        $('#droite button').css('background-color','gray');
+                    }
+                }
                 break;
             case "Pretre":
                 $('.energie-bar').css('background-color','gold');
                 applyChange(arr_retour.hero.int_foi_actuel, arr_retour.hero.int_foi_max,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 if(arr_retour.hero.int_foi_actuel < 50){
                     $('#milieu button').css('background-color','gray');
+                }
+                if(arr_retour.hero.arr_sorts[2] != null){
+                    if(arr_retour.hero.arr_sorts[2].int_cooldown > arr_retour.hero.arr_sorts[2].int_cd_done){
+                        $('#droite button').css('background-color','gray');
+                    }
                 }
                 break;
         }
