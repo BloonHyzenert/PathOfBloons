@@ -21,6 +21,10 @@ class Guerrier extends Hero {
 
         $this->learn_sort("Justice", 1.2, "Inflige des dégats à l'ennemi et augmente votre rage de 25 points", "./ressources/justice.png");
         $this->learn_sort("Taillade", 1.45, "Inflige d'important à l'ennemi, ignore 50% de l'armure et augmente votre rage de 50 points", "./ressources/taillade.png", 1, $int_cd_done);
+
+        if($this->int_niveau == 1) {
+            $this->learn_sort("Dernier Souffle", 0, "Tombe a 1 HP, mais deviens immortel & augmente le taux critique à 100% pendant 2 tours, et régénère 25% des dégâts infligés !", "./ressources/souffle.png", 4, $int_cd_done);
+        }
     }
 
     public static function withArray($arr_data) {     
@@ -32,15 +36,18 @@ class Guerrier extends Hero {
         
         $int_random = random_int(0, 100);
         if($int_random < $this->get_critique()) { // Gestion du critique 
-            if($id_sort == 0) {
+            
+            if($id_sort == 0) { // Sort 1 
                 $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
+                $this->get_sorts()[1]->set_cd_done($this->get_sorts()[2]->get_cd_done() + 1);
                 if($this->get_sorts()[1]->get_cd_done() > $this->get_sorts()[1]->get_cooldown()) {
                     $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cooldown());
                 }
 
                 $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense()) * 2;
                 $this->set_rage($this->get_rage() + 25);
-            } else if($id_sort == 1) {
+            } else if($id_sort == 1) { // Sort 2
+                $this->get_sorts()[1]->set_cd_done($this->get_sorts()[2]->get_cd_done() + 1);
                 if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
                     $this->get_sorts()[$id_sort]->set_cd_done(0);
                     $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.5) * 2;
@@ -48,6 +55,16 @@ class Guerrier extends Hero {
                 } else {
                     return ["error" => "Le sort n'est pas encore prêt !"];
                 }
+            } else if($id_sort == 2) { // Sort 3
+                $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
+                if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
+                    $this->get_sorts()[$id_sort]->set_cd_done(0);
+                    $int_degat = 0;
+                } else {
+                    return ["error" => "Le sort n'est pas encore prêt !"];
+                }
+                $this->set_pv_actuel(1);
+                $this->set_critique(100);
             }
         } else {
             if($id_sort == 0) {
@@ -75,7 +92,7 @@ class Guerrier extends Hero {
             $int_degat *= 3;
         }
 
-        //Gestion de l'esquive
+        // Gestion de l'esquive
         $int_random = random_int(0, 100);
         if($int_random <= $obj_monstre->get_esquive()) {
             $int_degat = -1;
@@ -88,6 +105,19 @@ class Guerrier extends Hero {
             } else {
                 $obj_monstre->set_pv_actuel(round($obj_monstre->get_pv_actuel() - $int_degat, 0));
             }
+
+            if($this->get_sorts()[2]->get_cooldown() - $this->get_sorts()[2]->get_cd_done() < 3) {
+                // On est en ulty
+                $this->set_pv_actuel($this->get_pv_actuel() + $int_degat * 0.25);
+                if($this->get_pv_actuel() > $this->get_pv()) {
+                    $this->set_pv_actuel($this->get_pv());
+                }
+                return ["message" => $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie", "effet" => "Je suis immortel"];
+            } else {
+                // Fin de l'ulty, reset du tx crit normal
+                $this->set_critique(20);
+            }
+
         } else if ($int_degat != -1) {
             $int_degat = 0;
             return ["message" => "Votre attaque n'est pas assez efficace"];
