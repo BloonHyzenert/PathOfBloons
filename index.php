@@ -61,14 +61,14 @@
                     </div>
                 </div>
                 <img class="image" alt="guerrier" src="./ressources/guerrier.jpg"></img>
-                <img class="spell1" src="./ressources/justice.png" title="Justice"></img>
-                <img class="spell2" src="./ressources/taillade.png" title="Taillade"></img>
+                <img class="spell1" src="./ressources/justice.png" title="Inflige des dégats à l'ennemi et augmente votre rage de 25 points"></img>
+                <img class="spell2" src="./ressources/taillade.png" title="Inflige d'important à l'ennemi, ignore 30% de l'armure et augmente votre rage de 50 points"></img>
                 <button class="blur" type="button" value="0">Guerrier</button>
             </div>
             <div class="choice" id="milieu">
                 <img class="image" alt="mage" src="./ressources/mage.jpg"></img>
-                <img class="spell1" src="./ressources/engelure.png" title="Engelure"></img>
-                <img class="spell2" src="./ressources/blizzard.png" title="Blizzard"></img>
+                <img class="spell1" src="./ressources/engelure.png" title="Inflige des dégats à l'ennemi, augmente votre mana de 15 points (A une faible chance de gelée pour 1 tour)"></img>
+                <img class="spell2" src="./ressources/blizzard.png" title="Inflige des gros dégats à l'ennemi, coûte 40 points de mana (Gêle pendant 1 tour)"></img>
                 <button class="blur" type="button" value="1">Mage</button>
             </div>
             <div class="choice" id="droite">
@@ -89,7 +89,7 @@
                         <div class="energie-box">
                             <div class="energie-bar-red" id="energieMonstre-red"></div>
                             <div class="energie-bar-blue" id="energieMonstre-blue"></div>
-                            <div class="energie-bar" id="energieMonstre-bar"></div>
+                            <div class="energie-bar noir" id="energieMonstre-bar"></div>
                             <div class="energie-bar-text" id="energieMonstre"></div>
                         </div>
                     </div>
@@ -114,14 +114,14 @@
                 </div>
             </div>
                 <img class="image" alt="pretre" src="./ressources/pretre.jpg"></img>
-                <img class="spell1" src="./ressources/marteau.png" title="Marteau Spirituel"></img>
-                <img class="spell2" src="./ressources/benediction.png" title="Benediction"></img>
+                <img class="spell1" src="./ressources/marteau.png" title="Inflige des dégats à l'ennemi et augmente votre énergie de 25 points"></img>
+                <img class="spell2" src="./ressources/benediction.png" title="Inflige des dégats modéré à l'ennemi, coute 50 points d'énergie, restore 50% des dégats infligé en point de vie"></img>
                 <button class="blur" type="button" value="2">Prêtre</button>
             </div>
         </form>
     </div>
     <div id='message'>
-        <p >BLLLLLLOOOOON</p>
+        <div>BLLLLLLOOOOON</div>
     </div>
 
 
