@@ -34,9 +34,9 @@
                     <div class="container">
                         <div class="col-md-12">
                             <div class="energie-box">
-                                <div class="energie-bar-red"></div>
-                                <div class="energie-bar-blue"></div>
-                                <div class="energie-bar"></div>
+                                <div class="energie-bar-red" id="energie-red"></div>
+                                <div class="energie-bar-blue" id="energie-blue"></div>
+                                <div class="energie-bar" id="energie-bar"></div>
                                 <div class="energie-bar-text" id="energie"></div>
                             </div>
                         </div>
@@ -87,9 +87,9 @@
                 <div class="container">
                     <div class="col-md-12">
                         <div class="energie-box">
-                            <div class="energie-bar-red"></div>
-                            <div class="energie-bar-blue"></div>
-                            <div class="energie-bar"></div>
+                            <div class="energie-bar-red" id="energieMonstre-red"></div>
+                            <div class="energie-bar-blue" id="energieMonstre-blue"></div>
+                            <div class="energie-bar" id="energieMonstre-bar"></div>
                             <div class="energie-bar-text" id="energieMonstre"></div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ class Mage extends Hero {
         $this->int_defense = 0;
         $this->int_esquive = 20;
         $this->int_critique = 30;
-        $this->mana = 100;
+        $this->int_mana = 100;
         
         $this->learn_sort("Engelure", 1, "Inflige des dégats à l'ennemi, augmente votre mana de 15 points (A une faible chance de gelée pour 1 tour)");
         $this->learn_sort("Blizzard", 1.55, "Inflige des gros dégats à l'ennemi, coûte 40 points de mana (Gêle pendant 1 tour)");

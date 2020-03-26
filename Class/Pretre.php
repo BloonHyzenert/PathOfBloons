@@ -4,7 +4,7 @@ require_once 'Hero.php';
 
 class Pretre extends Hero {
     
-    protected $int_energie;
+    protected $int_foi;
 
     public function __construct() {
         $this->str_nom = "Pretre";
@@ -17,7 +17,7 @@ class Pretre extends Hero {
         $this->int_defense = 5;
         $this->int_esquive = 20;
         $this->int_critique = 30;
-        $this->int_energie = 0;
+        $this->int_foi = 0;
 
         $this->learn_sort("Marteau spirituel", 1, "Inflige des dégats à l'ennemi et augmente votre énergie de 25 points");
         $this->learn_sort("Bénédiction", 1.25, "Inflige des dégats modéré à l'ennemi, coute 50 points d'énergie, restore 50% des dégats infligé en point de vie");
