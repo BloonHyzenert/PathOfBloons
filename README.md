@@ -1,4 +1,4 @@
-# DowlGosper
+# PATH OF BLOONS
 Jeu de plateau
 
 Bienvenu dans PATH OF BLOONS !
