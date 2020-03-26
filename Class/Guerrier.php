@@ -56,7 +56,8 @@ class Guerrier extends Hero {
         //Gestion de l'esquive
         $int_random = random_int(0, 100);
         if($int_random < $obj_monstre->get_esquive()) {
-            $int_degat = 0;
+            $int_degat = -1;
+            return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
         }
 
         if($int_degat > 0) {
@@ -65,6 +66,8 @@ class Guerrier extends Hero {
             } else {
                 $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
             }
+        } else if ($int_degat == 0) {
+            return ["message" => "Votre attaque n'est pas assez efficace"];
         }
 
         return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];

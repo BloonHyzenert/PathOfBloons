@@ -65,7 +65,7 @@ class Mage extends Hero {
             // Gestion de l'esquive
             $int_random = random_int(0, 100);
             if($int_random < $obj_monstre->get_esquive()) {
-                $int_degat = 0;
+                $int_degat = -1;
                 return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
             } else {
                 // Gestion du gêle
@@ -88,7 +88,9 @@ class Mage extends Hero {
                 } else {
                     return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
                 }
-            }  
+            } else if ($int_degat == 0) {
+                return ["message" => "Votre attaque n'est pas assez efficace"];
+            }
         } else {
             return ["error" => "Pas assez de mana pour lancer le sort"];
         }

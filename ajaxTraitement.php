@@ -202,7 +202,7 @@ if(isset($_POST['hero'])) {
             if(isset($message_combat['error'])) {
                 $str_message = $message_combat['error'];
             } else if (isset($message_combat['effet'])) {
-                $str_message = $message_combat['message'] . " " . $message_combat['effet'];
+                $str_message = $message_combat['message'] . "<br>" . $message_combat['effet'];
             } else {
                 $str_message = $message_combat['message']; 
             }
@@ -212,7 +212,7 @@ if(isset($_POST['hero'])) {
                 $arr_retour = [
                     'mode' => 'choix_hero', 
                     'niveau' => 0,
-                    'message' => $str_message
+                    'message' => "YOU DIED !!"
                 ];
             } else {
                 $arr_retour = [
@@ -220,7 +220,7 @@ if(isset($_POST['hero'])) {
                     'monstre' => $obj_monstre, 
                     'mode' => 'combat', 
                     'niveau' => $_POST['niveau'],
-                    'message' => "YOU DIED !!"
+                    'message' => $str_message
                 ];
             }
         }

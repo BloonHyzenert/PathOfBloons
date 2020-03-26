@@ -43,7 +43,7 @@ class Monstre extends Personnage implements \JsonSerializable {
       } else {
           $obj_hero->set_pv_actuel($obj_hero->get_pv_actuel() - $int_degat);
       }
-      return ["message" => "Le " . $obj_hero->get_nom() . " a perdu " . $int_degat . " points de vie"];
+      return "Le " . $obj_hero->get_nom() . " a perdu " . $int_degat . " points de vie";
     }
   } 
 }
