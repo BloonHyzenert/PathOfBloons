@@ -146,6 +146,7 @@ body {
 #message{
     display: none;/*flex*/
     align-items: center;
+    text-align: center;
     justify-content: center;
     position: absolute;
     top : 0px;
@@ -153,7 +154,12 @@ body {
     width: 100vw;
     height: 100vh;
     font-size: 4em;
-    color: black;
+    font-weight: bold;
+    color: whitesmoke;
+}
+
+#message div{
+    background-image: url("../ressources/GreenBackground.jpg");
 }
 
 .noir{

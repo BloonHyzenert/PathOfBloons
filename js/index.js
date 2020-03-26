@@ -84,7 +84,7 @@ function afficher_donnees(arr_retour) {
         $('#esquiveMonstre').html(arr_retour.monstre.int_esquive);
         
         applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/pointvie.svg"></img>','pvMonstre');
-        applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/energie.png"></img>','energieMonstre');
+        //applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/energie.png"></img>','energieMonstre');
         $('#energieMonstre').html('');
         $('#gauche button').html('<img class="iconSpell" src="./ressources/justice.png" title="'+arr_retour.hero.arr_sorts[0].str_effet+'"></img>'+arr_retour.hero.arr_sorts[0].str_nom);
         $('#milieu button').html('<img class="iconSpell" src="./ressources/justice.png" title="'+arr_retour.hero.arr_sorts[1].str_effet+'"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
@@ -93,9 +93,12 @@ function afficher_donnees(arr_retour) {
     
 }
 
-function afficher_message(str,time = 1500){
+function afficher_message(str,time = 2000){
     $('#message').html(str);
+    $('#message div').css('background-image','url("../ressources/GreenBackground.jpg")');
     $('#message').css('display','flex');
+    $('#message div').css('padding','30px');
+    $('#message div').css('border','solid 4px black');
     $('#message').fadeOut(time);
     setTimeout(function(){ $('#message').css('display','none'); }, time);
 }
