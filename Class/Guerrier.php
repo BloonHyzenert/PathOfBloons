@@ -36,7 +36,7 @@ class Guerrier extends Hero {
         if($int_random <= $obj_monstre->get_esquive()) {
             $int_degat = -1;
             if($id_sort == 1) {
-                $this->get_sorts()[$id_sort]->set_cd_done(0);
+                $this->get_sorts()[$id_sort]->set_cd_done($this->get_sorts()[1]->get_cd_done());
             }
             return ["message" => $obj_monstre->get_nom() . " esquiver votre attaque !!"];
         } else {
