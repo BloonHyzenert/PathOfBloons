@@ -42,7 +42,7 @@ Defense par niveau augmenter: 5 -> 7<br>
 PV par niveau diminuer: 70 -> 65 
 
 ## Prêtre
-La classe prêtre est trop polivalente, nous aimons son kit, mais souhaitons rendre le choix du héro moins évident !
+La classe prêtre est trop polyvalente, nous aimons son kit, mais souhaitons rendre le choix du héro moins évident !
 #### Stats par niveau
 Attaque par niveau diminuer: 15 -> 10<br>
 Defense par niveau augmenter: 1 -> 2 
