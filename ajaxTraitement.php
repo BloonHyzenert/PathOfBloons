@@ -43,6 +43,7 @@ $arr_monstre_superieur = [
         'int_critique' => 10
     ],
 ];
+
 $arr_monstre_inferieur = [
     0 => [
         'str_nom' => 'Globloon',
@@ -139,9 +140,10 @@ if(isset($_POST['hero'])) {
         switch($_POST['choix']) {
             case '0':
                 // Evenement
-                $int_soin = $obj_hero->get_pv() * (random_int(25, 75)/100);
+                $int_soin = $obj_hero->get_pv() * (random_int(25, 75) / 100);
                 $obj_hero->set_pv_actuel($obj_hero->get_pv_actuel() + $int_soin); 
-                if($obj_hero->get_pv_actuel() > $obj_hero->get_pv()){
+
+                if($obj_hero->get_pv_actuel() > $obj_hero->get_pv()) {
                     $int_soin -= $obj_hero->get_pv_actuel() - $obj_hero->get_pv();
                     $obj_hero->set_pv_actuel($obj_hero->get_pv());
                 }
@@ -157,7 +159,7 @@ if(isset($_POST['hero'])) {
                     'monstre_1' => new Monstre($arr_monstre_inferieur[$int_rand1]), 
                     'monstre_2' => new Monstre($arr_monstre_superieur[$int_rand2]), 
                     'niveau' => $_POST['niveau'] + 1,
-                    'message' => "Vous vous êtes soigné de ".$int_soin." points de vie"
+                    'message' => "Vous vous êtes soigné de " . $int_soin . " points de vie"
                 ];
             break;
             case '1':
