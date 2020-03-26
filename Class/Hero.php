@@ -54,7 +54,7 @@ abstract class Hero extends Personnage {
       $int_exp = 60;
     }
 
-    $obj_hero->set_experience($obj_hero->get_experience() + $int_exp);
+    $obj_hero->set_experience($obj_hero->get_experience() + $obj_monstre->get_experience());
     if($obj_hero->get_experience() >= 100) {
         $obj_hero->nouveau_niveau();
     }

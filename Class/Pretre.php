@@ -47,7 +47,7 @@ class Pretre extends Hero {
                     $this->set_foi_actuel($this->get_foi_actuel() - 50);
                 }
             }
-            return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
+            return ["message" => $obj_monstre->get_nom() . " esquiver votre attaque !!"];
         } else {
             if($id_sort == 0) {
                 $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense());
@@ -92,9 +92,9 @@ class Pretre extends Hero {
                     $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
                 }
                 if($str_effet != '') {
-                    return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie", "effet" => $str_effet];
+                    return ["message" => $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie", "effet" => $str_effet];
                 } else {
-                    return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
+                    return ["message" => $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie"];
                 }
             } else if ($int_degat != -1) {
                 $int_degat = 0;
