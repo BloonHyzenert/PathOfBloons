@@ -34,6 +34,7 @@ class Monstre extends Personnage implements \JsonSerializable {
     $int_random = random_int(0, 100);
     if($int_random < $obj_hero->get_esquive()) {
         $int_degat = 0;
+        return ["message" => "Le " . $obj_hero->get_nom() . " esquiver votre attaque !!"];
     }
 
     if($int_degat > 0) {
@@ -42,6 +43,7 @@ class Monstre extends Personnage implements \JsonSerializable {
       } else {
           $obj_hero->set_pv_actuel($obj_hero->get_pv_actuel() - $int_degat);
       }
+      return ["message" => "Le " . $obj_hero->get_nom() . " a perdu " . $int_degat . " points de vie"];
     }
   } 
 }

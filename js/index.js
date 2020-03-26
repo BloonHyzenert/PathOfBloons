@@ -1,11 +1,10 @@
 function afficher_donnees(arr_retour) {
     
-    afficher_message("GAME OVER",2000);
+    afficher_message(arr_retour.afficher_message);
     
     $('.spell1').css('display','none');
     $('.spell2').css('display','none');
     $('.spell3').css('display','none');
-
     if (arr_retour.mode === 'choix_hero') {
         //Display choix du hero
         $('#niveau').html(0);
@@ -53,6 +52,8 @@ function afficher_donnees(arr_retour) {
         $('#etage').html(arr_retour.niveau);
         $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
 
+        //$('#message').html(arr_retour.message['message']);
+
         $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre.str_image);
         $('#monstre').css('display','block');
         $('#hero').css('display','block');
@@ -70,7 +71,7 @@ function afficher_donnees(arr_retour) {
                 break;
             case "Mage":
                 $('.energie-bar').css('background-color','#0f5291');
-                applyChange(arr_retour.hero.int_mana, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                applyChange(arr_retour.hero.int_mana_actuel, arr_retour.hero.int_mana_max,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
             case "Pretre":
                 $('.energie-bar').css('background-color','gold');
@@ -92,7 +93,7 @@ function afficher_donnees(arr_retour) {
     
 }
 
-function afficher_message(str,time = 2000){
+function afficher_message(str,time = 1500){
     $('#message').html(str);
     $('#message').css('display','flex');
     $('#message').fadeOut(time);
