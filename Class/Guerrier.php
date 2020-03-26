@@ -20,7 +20,7 @@ class Guerrier extends Hero {
         $this->int_rage = $int_rage;
 
         $this->learn_sort("Justice", 1.2, "Inflige des dégats à l'ennemi et augmente votre rage de 25 points", "./ressources/justice.png");
-        $this->learn_sort("Taillade", 1.45, "Inflige d'important à l'ennemi, ignore 30% de l'armure et augmente votre rage de 50 points", "./ressources/taillade.png", 1, $int_cd_done);
+        $this->learn_sort("Taillade", 1.45, "Inflige d'important à l'ennemi, ignore 50% de l'armure et augmente votre rage de 50 points", "./ressources/taillade.png", 1, $int_cd_done);
     }
 
     public static function withArray($arr_data) {     
@@ -43,7 +43,7 @@ class Guerrier extends Hero {
             } else if($id_sort == 1) {
                 if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
                     $this->get_sorts()[$id_sort]->set_cd_done(0);
-                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7) * 2;
+                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.5) * 2;
                     $this->set_rage($this->get_rage() + 50);
                 } else {
                     return ["error" => "Le sort n'est pas encore prêt !"];
@@ -61,7 +61,7 @@ class Guerrier extends Hero {
             } else if($id_sort == 1) {
                 if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
                     $this->get_sorts()[$id_sort]->set_cd_done(0);
-                    $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7;
+                    $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.5;
                     $this->set_rage($this->get_rage() + 50);
                 } else {
                     return ["error" => "Le sort n'est pas encore prêt !"];

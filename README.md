@@ -36,7 +36,8 @@ Malgré nos efforts, le guerrier reste trop faible dans la méta actuelle. Nous 
 #### Justice
 Ratio de dégâts augmenter: 1.1 -> 1.2
 #### Taillade
-Ratio de dégâts augmenter: 1.35 -> 1.45
+Ratio de dégâts augmenter: 1.35 -> 1.45<br>
+Ratio de défense ignoré augmenter: 30% -> 50%
 #### Stats par niveau
 Defense par niveau augmenter: 5 -> 7<br>
 PV par niveau diminuer: 70 -> 65 
