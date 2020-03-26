@@ -157,7 +157,7 @@ if(isset($_POST['hero'])) {
                     'monstre_1' => new Monstre($arr_monstre_inferieur[$int_rand1]), 
                     'monstre_2' => new Monstre($arr_monstre_superieur[$int_rand2]), 
                     'niveau' => $_POST['niveau'] + 1,
-                    'message' => "Vous vous êtes soigné de ".$int_soin." points de vie"
+                    'message' => "Vous vous êtes soigné de ". $int_soin ." points de vie"
                 ];
             break;
             case '1':
