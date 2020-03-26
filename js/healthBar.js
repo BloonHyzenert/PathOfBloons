@@ -17,7 +17,7 @@ $(".add-damage").click(function() {
     } else {
       $('.message-box').html("You took " + damage + " points of damage!");
     }
-    applyChange(curHealth);
+    applyChange(curHealth,'');
   }
 });
 $(".add-heal").click(function() {
@@ -35,23 +35,22 @@ $(".add-heal").click(function() {
     } else {
       $('.message-box').html("You regained your health by " + heal + " points!");
     }
-    applyChange(curHealth);
+    applyChange(curHealth,'');
   }
 });
 
-function applyChange(curHealth) {
-  var a = curHealth * (100 / maxHealth);
-  $(".health-bar-text").html(Math.round(a) + "%");
-  $(".health-bar-red").animate({
+function applyChange(curPV, maxPV, str, name) {
+  var a = curPV * (100 / maxPV);
+  $("#"+name+"-red").animate({
     'width': a + "%"
   }, 700);
-  $(".health-bar").animate({
+  $("#"+name+"-bar").animate({
     'width': a + "%"
   }, 500);
-  $(".health-bar-blue").animate({
+  $("#"+name+"-blue").animate({
     'width': a + "%"
   }, 300);
-  $('.total').html(curHealth + "/" + maxHealth);
+  $('#'+name).html(str+curPV + "/" + maxPV);
 }
 
 function restart() {

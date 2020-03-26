@@ -24,9 +24,9 @@
                     <div class="container">
                         <div class="col-md-12">
                             <div class="health-box">
-                                <div class="health-bar-red"></div>
-                                <div class="health-bar-blue"></div>
-                                <div class="health-bar"></div>
+                                <div class="health-bar-red" id="pv-red"></div>
+                                <div class="health-bar-blue" id="pv-blue"></div>
+                                <div class="health-bar" id="pv-bar"></div>
                                 <div class="health-bar-text" id="pv"></div>
                             </div>
                         </div>
@@ -77,9 +77,9 @@
                 <div class="container">
                     <div class="col-md-12">
                         <div class="health-box">
-                            <div class="health-bar-red"></div>
-                            <div class="health-bar-blue"></div>
-                            <div class="health-bar"></div>
+                            <div class="health-bar-red" id="pvMonstre-red"></div>
+                            <div class="health-bar-blue" id="pvMonstre-blue"></div>
+                            <div class="health-bar" id="pvMonstre-bar"></div>
                             <div class="health-bar-text" id="pvMonstre"></div>
                         </div>
                     </div>
