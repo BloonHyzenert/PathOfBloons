@@ -9,6 +9,7 @@ function afficher_donnees(arr_retour) {
         //Display choix du hero
         $('#niveau').html(0);
         $('#etage').html(arr_retour.niveau);
+        applyChange(0, 100,'','xp');
         $('#titre').html('Bienvenue dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :');
 
         $('.spell1').css('display','block');
@@ -31,6 +32,7 @@ function afficher_donnees(arr_retour) {
         // Display choix du chemin
         $('#niveau').html(arr_retour.hero.int_niveau);
         $('#etage').html(arr_retour.niveau);
+        applyChange(arr_retour.hero.int_experience, 100,'','xp');
 
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
         'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la gloire et la vie éternel ?!');

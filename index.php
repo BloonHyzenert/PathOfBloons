@@ -13,7 +13,15 @@
     <h1>Path of Bloons</h1>
     <div id="plateau_jeu">
         <div id="enTete">
-            <div class="coin">Niveau <p id="niveau" class="coinNumber"> 0</p></div>
+            <div class="coin">Niveau 
+                <p id="niveau" class="coinNumber"> 0</p>
+                <div class="xp-box">
+                    <div class="xp-bar-red" id="xp-red"></div>
+                    <div class="xp-bar-blue" id="xp-blue"></div>
+                    <div class="xp-bar" id="xp-bar"></div>
+                    <div class="xp-bar-text" id="xp"></div>
+                </div>
+            </div>
             <p id="titre">Bienvenue dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :</p>
             <div class="coin">Etage <p id="etage" class="coinNumber"> 0</p></div>
         </div>

@@ -116,6 +116,7 @@ body {
     min-height: 5%;
     white-space: nowrap;
     border-radius: 100px;
+    border: solid 2px green;
 }
 
 .titre2{
