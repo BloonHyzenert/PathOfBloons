@@ -19,10 +19,10 @@ abstract class Hero extends Personnage {
     $this->set_experience($this->get_experience() - 100);
 
     if($this instanceof Guerrier) {
-      $this->set_pv($this->get_pv() + 70);
-      $this->set_pv_actuel($this->get_pv_actuel() + 70);
+      $this->set_pv($this->get_pv() + 65);
+      $this->set_pv_actuel($this->get_pv_actuel() + 65);
       $this->set_attaque($this->get_attaque() + 5);
-      $this->set_defense($this->get_defense() + 5);
+      $this->set_defense($this->get_defense() + 7);
 
     } else if($this instanceof Mage) {
       $this->set_pv($this->get_pv() + 50);
@@ -34,8 +34,8 @@ abstract class Hero extends Personnage {
     } else if ($this instanceof Pretre) {
       $this->set_pv($this->get_pv() + 35);
       $this->set_pv_actuel($this->get_pv_actuel() + 35);
-      $this->set_attaque($this->get_attaque() + 15);
-      $this->set_defense($this->get_defense() + 1);
+      $this->set_attaque($this->get_attaque() + 10);
+      $this->set_defense($this->get_defense() + 2);
     }
   }
 
