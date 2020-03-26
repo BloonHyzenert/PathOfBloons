@@ -7,7 +7,7 @@ class Mage extends Hero {
     protected $int_mana_max;
     protected $int_mana_actuel;
 
-    public function __construct($int_pv = 150, $int_pv_actuel = 150, $int_attaque = 30, $int_experience = 0, $int_niveau = 1, $int_defense = 0, $int_mana_max = 100, $int_mana_actuel = 100) {
+    public function __construct($int_pv = 150, $int_pv_actuel = 150, $int_attaque = 30, $int_experience = 0, $int_niveau = 1, $int_defense = 0, $int_critique = 20, $int_mana_max = 100, $int_mana_actuel = 100) {
         $this->str_nom = "Mage";
         $this->str_image = "mage.jpg";
         $this->int_pv = $int_pv;
@@ -16,8 +16,8 @@ class Mage extends Hero {
         $this->int_experience = $int_experience;
         $this->int_niveau = $int_niveau;
         $this->int_defense = $int_defense;
-        $this->int_esquive = 20;
-        $this->int_critique = 30;
+        $this->int_esquive = 15;
+        $this->int_critique = $int_critique;
         $this->int_mana_max = $int_mana_max;
         $this->int_mana_actuel = $int_mana_actuel;
 
@@ -26,7 +26,7 @@ class Mage extends Hero {
     }
 
     public static function withArray($arr_data) {
-        $obj_hero = new self($arr_data['int_pv'], $arr_data['int_pv_actuel'], $arr_data['int_attaque'], $arr_data['int_experience'], $arr_data['int_niveau'], $arr_data['int_defense'], $arr_data['int_mana_max'], $arr_data['int_mana_actuel']);
+        $obj_hero = new self($arr_data['int_pv'], $arr_data['int_pv_actuel'], $arr_data['int_attaque'], $arr_data['int_experience'], $arr_data['int_niveau'], $arr_data['int_defense'], $arr_data['int_critique'], $arr_data['int_mana_max'], $arr_data['int_mana_actuel']);
         return $obj_hero;
     }
 
@@ -81,7 +81,7 @@ class Mage extends Hero {
                 if($obj_monstre->get_pv_actuel() - $int_degat < 0) {
                     $obj_monstre->set_pv_actuel(0);    
                 } else {
-                    $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
+                    $obj_monstre->set_pv_actuel(round($obj_monstre->get_pv_actuel() - $int_degat, 0));
                 }
                 if($str_effet != '') {
                     return ["message" => "Le " . $obj_monstre->get_nom() . " a perdu " . $int_degat . " points de vie", "effet" => $str_effet];

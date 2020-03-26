@@ -30,21 +30,29 @@ class Guerrier extends Hero {
  
     public function attaquer($obj_monstre, $id_sort) {
         $int_random = random_int(0, 100);
-        if($int_random < $this->get_critique()) { // Gestion du critique 
-            if($id_sort == 0) {
-                $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense()) * 2;
-                $this->set_rage($this->get_rage() + 25);
-            } else if($id_sort == 1) {
-                $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7) * 2;
-                $this->set_rage($this->get_rage() + 50);
-            }
+
+        //Gestion de l'esquive
+        $int_random = random_int(0, 100);
+        if($int_random <= $obj_monstre->get_esquive()) {
+            $int_degat = -1;
+            return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
         } else {
-            if($id_sort == 0) {
-                $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense();
-                $this->set_rage($this->get_rage() + 25);
-            } else if($id_sort == 1) {
-                $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7;
-                $this->set_rage($this->get_rage() + 50);
+            if($int_random < $this->get_critique()) { // Gestion du critique 
+                if($id_sort == 0) {
+                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense()) * 2;
+                    $this->set_rage($this->get_rage() + 25);
+                } else if($id_sort == 1) {
+                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7) * 2;
+                    $this->set_rage($this->get_rage() + 50);
+                }
+            } else {
+                if($id_sort == 0) {
+                    $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense();
+                    $this->set_rage($this->get_rage() + 25);
+                } else if($id_sort == 1) {
+                    $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7;
+                    $this->set_rage($this->get_rage() + 50);
+                }
             }
         }
 
@@ -53,18 +61,13 @@ class Guerrier extends Hero {
             $this->set_rage(0);
             $int_degat *= 3;
         }
-        //Gestion de l'esquive
-        $int_random = random_int(0, 100);
-        if($int_random < $obj_monstre->get_esquive()) {
-            $int_degat = -1;
-            return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
-        }
+
 
         if($int_degat > 0) {
             if($obj_monstre->get_pv_actuel() - $int_degat < 0) {
                 $obj_monstre->set_pv_actuel(0);    
             } else {
-                $obj_monstre->set_pv_actuel($obj_monstre->get_pv_actuel() - $int_degat);
+                $obj_monstre->set_pv_actuel(round($obj_monstre->get_pv_actuel() - $int_degat, 0));
             }
         } else if ($int_degat != -1) {
             $int_degat = 0;

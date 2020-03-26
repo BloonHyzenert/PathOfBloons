@@ -203,7 +203,7 @@ if(isset($_POST['hero'])) {
                 'monstre_1' => new Monstre($arr_monstre[$int_rand1]), 
                 'monstre_2' => new Monstre($arr_monstre[$int_rand2]),
                 'niveau' => $_POST['niveau'],
-                'message' => "Vous avez tué le montre !"
+                'message' => "Vous avez tué " . $obj_monstre->get_nom()
             ];
         } else {
 
