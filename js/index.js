@@ -7,6 +7,9 @@ function afficher_donnees(arr_retour) {
     $('.spell3').css('display','none');
     $('#milieu button').css('background-color','#025309');
     $('#droite button').css('display','block');
+    $('#gauche button').attr('title', '');
+    $('#milieu button').attr('title', '');
+    $('#droite button').attr('title', '');
     if (arr_retour.mode === 'choix_hero') {
         //Display choix du hero
         $('#niveau').html(0);

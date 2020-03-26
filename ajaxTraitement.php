@@ -122,7 +122,7 @@ if(isset($_POST['hero'])) {
 
     $arr_retour = [];
     $message_combat = ['message' => ''];
-    $arr_message = ['In carnage, I bloom, like a flower in the dawn', 'DIE DIE DIE !', "I must destroy even hope."];
+    $arr_message = ['Dans le carnage, je fleuris, comme une fleur à l\'aube', 'La Puissance est mère de la guerre !', "Je détruirai tout, même l'espoir."];
     
     if($_POST['hero']['str_nom'] === 'Guerrier') { // Constructeurs surchargé
         $obj_hero = Guerrier::withArray($_POST['hero']);
@@ -139,7 +139,12 @@ if(isset($_POST['hero'])) {
         switch($_POST['choix']) {
             case '0':
                 // Evenement
-
+                $int_soin = $obj_hero->get_pv() * (random_int(25, 75)/100);
+                $obj_hero->set_pv_actuel($obj_hero->get_pv_actuel() + $int_soin); 
+                if($obj_hero->get_pv_actuel() > $obj_hero->get_pv()){
+                    $int_soin -= $obj_hero->get_pv_actuel() - $obj_hero->get_pv();
+                    $obj_hero->set_pv_actuel($obj_hero->get_pv());
+                }
                 // Nouveau choix de monstre
                 $int_rand1 = random_int(0, count($arr_monstre_inferieur) - 1);
                 $int_rand2 = random_int(0, count($arr_monstre_superieur) - 1);
@@ -152,7 +157,7 @@ if(isset($_POST['hero'])) {
                     'monstre_1' => new Monstre($arr_monstre_inferieur[$int_rand1]), 
                     'monstre_2' => new Monstre($arr_monstre_superieur[$int_rand2]), 
                     'niveau' => $_POST['niveau'] + 1,
-                    'message' => $arr_message[$int_random_message]
+                    'message' => "Vous vous êtes soigné de ".$int_soin." points de vie"
                 ];
             break;
             case '1':
@@ -222,7 +227,7 @@ if(isset($_POST['hero'])) {
                 $arr_retour = [
                     'mode' => 'choix_hero', 
                     'niveau' => 0,
-                    'message' => "YOU DIED !!"
+                    'message' => "Vous êtes mort !!"
                 ];
             } else {
                 $arr_retour = [
