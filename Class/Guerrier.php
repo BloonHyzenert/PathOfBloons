@@ -6,7 +6,7 @@ class Guerrier extends Hero {
 
     protected $int_rage;
 
-    public function __construct($int_pv = 200, $int_pv_actuel = 200, $int_attaque = 25, $int_experience = 0, $int_niveau = 1, $int_rage = 0, $int_defense = 10, $int_esquive = 10, $int_critique = 20) {
+    public function __construct($int_pv = 200, $int_pv_actuel = 200, $int_attaque = 25, $int_experience = 0, $int_niveau = 1, $int_rage = 0, $int_defense = 10, $int_cd_done = 1, $int_esquive = 10, $int_critique = 20) {
         $this->str_nom = "Guerrier";
         $this->str_image = "guerrier.jpg";
         $this->int_pv = $int_pv;
@@ -20,11 +20,11 @@ class Guerrier extends Hero {
         $this->int_rage = $int_rage;
 
         $this->learn_sort("Justice", 1.2, "Inflige des dégats à l'ennemi et augmente votre rage de 25 points", "./ressources/justice.png");
-        $this->learn_sort("Taillade", 1.45, "Inflige d'important à l'ennemi, ignore 30% de l'armure et augmente votre rage de 50 points", "./ressources/taillade.png");
+        $this->learn_sort("Taillade", 1.45, "Inflige d'important à l'ennemi, ignore 30% de l'armure et augmente votre rage de 50 points", "./ressources/taillade.png", 1, $int_cd_done);
     }
 
-    public static function withArray($arr_data) {        
-        $obj_hero = new self($arr_data['int_pv'], $arr_data['int_pv_actuel'], $arr_data['int_attaque'], $arr_data['int_experience'], $arr_data['int_niveau'], $arr_data['int_rage'], $arr_data['int_defense']);
+    public static function withArray($arr_data) {     
+        $obj_hero = new self($arr_data['int_pv'], $arr_data['int_pv_actuel'], $arr_data['int_attaque'], $arr_data['int_experience'], $arr_data['int_niveau'], $arr_data['int_rage'], $arr_data['int_defense'], $arr_data['arr_sorts'][1]['int_cd_done']);
         return $obj_hero;
     }
  
@@ -35,23 +35,38 @@ class Guerrier extends Hero {
         $int_random = random_int(0, 100);
         if($int_random <= $obj_monstre->get_esquive()) {
             $int_degat = -1;
+            if($id_sort == 1) {
+                $this->get_sorts()[$id_sort]->set_cd_done(0);
+            }
             return ["message" => "Le " . $obj_monstre->get_nom() . " esquiver votre attaque !!"];
         } else {
             if($int_random < $this->get_critique()) { // Gestion du critique 
                 if($id_sort == 0) {
+                    $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
                     $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense()) * 2;
                     $this->set_rage($this->get_rage() + 25);
                 } else if($id_sort == 1) {
-                    $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7) * 2;
-                    $this->set_rage($this->get_rage() + 50);
+                    if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
+                        $this->get_sorts()[$id_sort]->set_cd_done(0);
+                        $int_degat = ($this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7) * 2;
+                        $this->set_rage($this->get_rage() + 50);
+                    } else {
+                        return ["error" => "Le sort n'est pas encore prêt !"];
+                    }
                 }
             } else {
                 if($id_sort == 0) {
+                    $this->get_sorts()[1]->set_cd_done($this->get_sorts()[1]->get_cd_done() + 1);
                     $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense();
                     $this->set_rage($this->get_rage() + 25);
                 } else if($id_sort == 1) {
-                    $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7;
-                    $this->set_rage($this->get_rage() + 50);
+                    if($this->get_sorts()[$id_sort]->get_cd_done() == $this->get_sorts()[$id_sort]->get_cooldown()) {
+                        $this->get_sorts()[$id_sort]->set_cd_done(0);
+                        $int_degat = $this->get_attaque() * $this->get_sort_degat($id_sort) - $obj_monstre->get_defense() * 0.7;
+                        $this->set_rage($this->get_rage() + 50);
+                    } else {
+                        return ["error" => "Le sort n'est pas encore prêt !"];
+                    }
                 }
             }
         }

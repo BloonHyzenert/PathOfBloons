@@ -70,7 +70,7 @@ class Mage extends Hero {
             } else {
                 // Gestion du gêle
                 $int_random = random_int(0, 100);
-                if($id_sort == 0 && $int_random < 15) {
+                if($id_sort == 0 && $int_random <= 35) {
                     $str_effet = "Vous avez gelé l'ennemi !! ";
                 } else if ($id_sort == 1) {
                     $str_effet = "Vous avez gelé l'ennemi !! "; 
