@@ -46,3 +46,8 @@ La classe prêtre est trop polivalente, nous aimons son kit, mais souhaitons ren
 #### Stats par niveau
 Attaque par niveau diminuer: 15 -> 10<br>
 Defense par niveau augmenter: 1 -> 2 
+
+## Mage
+
+#### Engelure
+Augmenter les chances de stun: 15% -> 35%
