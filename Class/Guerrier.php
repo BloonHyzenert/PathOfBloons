@@ -19,8 +19,8 @@ class Guerrier extends Hero {
         $this->int_critique = $int_critique;
         $this->int_rage = $int_rage;
 
-        $this->learn_sort("Justice", 1.1, "Inflige des dégats à l'ennemi et augmente votre rage de 25 points");
-        $this->learn_sort("Taillade", 1.35, "Inflige d'important à l'ennemi, ignore 30% de l'armure et augmente votre rage de 50 points");
+        $this->learn_sort("Justice", 1.1, "Inflige des dégats à l'ennemi et augmente votre rage de 25 points", "./ressources/justice.png");
+        $this->learn_sort("Taillade", 1.35, "Inflige d'important à l'ennemi, ignore 30% de l'armure et augmente votre rage de 50 points", "./ressources/taillade.png");
     }
 
     public static function withArray($arr_data) {        

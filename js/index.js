@@ -86,8 +86,8 @@ function afficher_donnees(arr_retour) {
         applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/pointvie.svg"></img>','pvMonstre');
         //applyChange(arr_retour.monstre.int_pv_actuel, arr_retour.monstre.int_pv,'<img class="iconPV" src="./ressources/energie.png"></img>','energieMonstre');
         $('#energieMonstre').html('');
-        $('#gauche button').html('<img class="iconSpell" src="./ressources/justice.png" title="'+arr_retour.hero.arr_sorts[0].str_effet+'"></img>'+arr_retour.hero.arr_sorts[0].str_nom);
-        $('#milieu button').html('<img class="iconSpell" src="./ressources/justice.png" title="'+arr_retour.hero.arr_sorts[1].str_effet+'"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
+        $('#gauche button').html('<img class="iconSpell" src="' + arr_retour.hero.arr_sorts[0].str_image + '" title="'+arr_retour.hero.arr_sorts[0].str_effet+'"></img>'+arr_retour.hero.arr_sorts[0].str_nom);
+        $('#milieu button').html('<img class="iconSpell" src="' + arr_retour.hero.arr_sorts[1].str_image + '" title="'+arr_retour.hero.arr_sorts[1].str_effet+'"></img>'+arr_retour.hero.arr_sorts[1].str_nom);
         $('#droite button').html('XXXXXX'/*arr_retour.hero.arr_sorts[2].str_nom*/);
     }
     

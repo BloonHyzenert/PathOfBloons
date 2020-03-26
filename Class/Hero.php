@@ -9,8 +9,8 @@ abstract class Hero extends Personnage {
   protected $int_niveau;
   protected $arr_sorts;
   
-  public function learn_sort($str_nom, $int_degat, $str_effet) {
-    $this->arr_sorts[] = new Sort($str_nom, $int_degat, $str_effet);
+  public function learn_sort($str_nom, $int_degat, $str_effet, $str_image) {
+    $this->arr_sorts[] = new Sort($str_nom, $int_degat, $str_effet, $str_image);
   }
 
   public function nouveau_niveau() {

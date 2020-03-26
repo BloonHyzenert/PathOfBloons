@@ -21,8 +21,8 @@ class Pretre extends Hero {
         $this->int_foi_max = $int_foi_max;
         $this->int_foi_actuel = $int_foi_actuel;
 
-        $this->learn_sort("Marteau spirituel", 1.2, "Inflige des dégats à l'ennemi et augmente votre foi de 25 points");
-        $this->learn_sort("Bénédiction", 1.65, "Inflige des dégats modéré à l'ennemi, consomme 50 points de foi, restore 100% des dégats de base infligé en point de vie (hors coup critique)");
+        $this->learn_sort("Marteau spirituel", 1.2, "Inflige des dégats à l'ennemi et augmente votre foi de 25 points", "./ressources/marteau.png");
+        $this->learn_sort("Bénédiction", 1.65, "Inflige des dégats modéré à l'ennemi, consomme 50 points de foi, restore 100% des dégats de base infligé en point de vie (hors coup critique)", "./ressources/benediction.png");
     }
 
     public static function withArray($arr_data) {
