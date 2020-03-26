@@ -7,8 +7,12 @@ function afficher_donnees(arr_retour) {
     $('.spell3').css('display','none');
     $('#message').css('display','flex');
 
-    if (arr_retour.mode === 'choix_chemin') {
-        //Display choix du chemin
+    if (arr_retour.mode === 'choix_hero') {
+        //Display choix du hero
+
+
+    } else if (arr_retour.mode === 'choix_chemin') {
+        // Display choix du chemin
         $('#titre').html('Vous arrivez à une intersection, 3 choix s\'offre à vous !<br>' +
         'Allez vous choisir la facilité et choisir l\'évènement, ou risquerez vous votre vie pour la gloire et la vie éternel ?!');
 
@@ -24,7 +28,7 @@ function afficher_donnees(arr_retour) {
         $('img[alt="guerrier"]').css('display','block');
 
     } else if (arr_retour.mode === 'combat') {
-        //Display mode combat
+        // Display mode combat
         $('#titre').html('Le terifiant ' + arr_retour.monstre.str_nom + ' vous attaque !!!!');
 
         $('img[alt="mage"]').attr('src', './ressources/' + arr_retour.monstre.str_image);

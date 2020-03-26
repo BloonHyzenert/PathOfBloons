@@ -24,7 +24,7 @@ class Guerrier extends Hero {
     }
 
     public static function withArray($arr_data) {        
-        $obj_hero = new self($arr_data['int_pv'], $arr_data['int_pv_actuel'], $arr_data['int_attaque'], $arr_data['int_experience'], $arr_data['int_niveau'], $arr_data['int_rage']);
+        $obj_hero = new self($arr_data['int_pv'], $arr_data['int_pv_actuel'], $arr_data['int_attaque'], $arr_data['int_experience'], $arr_data['int_niveau'], $arr_data['int_rage'], $arr_data['int_defense']);
         return $obj_hero;
     }
  

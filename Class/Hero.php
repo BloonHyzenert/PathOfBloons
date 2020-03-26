@@ -14,14 +14,29 @@ abstract class Hero extends Personnage {
   }
 
   public function nouveau_niveau() {
+
     $this->set_niveau($this->get_niveau() + 1);
-    $this->set_experience(0);
+    $this->set_experience($this->get_experience() - 100);
 
-    $this->set_pv($this->get_pv() + 50);
-    $this->set_pv_actuel($this->get_pv_actuel() + 50);
+    if($this instanceof Guerrier) {
+      $this->set_pv($this->get_pv() + 70);
+      $this->set_pv_actuel($this->get_pv_actuel() + 70);
+      $this->set_attaque($this->get_attaque() + 5);
+      $this->set_defense($this->get_defense() + 5);
 
-    $this->set_attaque($this->get_attaque() + 5);
-    $this->set_defense($this->get_defense() + 5);
+    } else if($this instanceof Mage) {
+      $this->set_pv($this->get_pv() + 50);
+      $this->set_pv_actuel($this->get_pv_actuel() + 50);
+      $this->set_attaque($this->get_attaque() + 6);
+      $this->set_defense($this->get_defense() + 2);
+      $this->set_critique($this->get_critique() + 2);
+
+    } else if ($this instanceof Pretre) {
+      $this->set_pv($this->get_pv() + 35);
+      $this->set_pv_actuel($this->get_pv_actuel() + 35);
+      $this->set_attaque($this->get_attaque() + 15);
+      $this->set_defense($this->get_defense() + 1);
+    }
   }
 
   public function get_sorts() {
