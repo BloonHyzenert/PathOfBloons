@@ -39,6 +39,10 @@ abstract class Hero extends Personnage {
     }
   }
 
+  public function gagner_experience($obj_monstre) {
+    return 100;
+  }
+
   public function get_sorts() {
     return $this->arr_sorts;
   }
