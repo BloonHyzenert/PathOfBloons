@@ -186,10 +186,7 @@ if(isset($_POST['hero'])) {
 
         if($obj_monstre->get_pv_actuel() == 0) {
 
-            $obj_hero->set_experience($obj_hero->get_experience() + $obj_hero->gagner_experience($obj_monstre));
-            if($obj_hero->get_experience() >= 100) {
-                $obj_hero->nouveau_niveau();
-            }
+            $obj_hero->gagner_experience($obj_hero, $obj_monstre);
 
             // Nouveau choix monstres
             $int_rand1 = random_int(0, count($arr_monstre) - 1);
