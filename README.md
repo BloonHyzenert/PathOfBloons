@@ -33,16 +33,16 @@ Bon chance !
 
 ## Guerrier 
 Malgré nos efforts, le guerrier reste trop faible dans la méta actuelle. Nous tentons de le rendre plus viable ! Amateurs de force brut, nous vous écoutons ! 
-### Justice
+#### Justice
 Ratio de dégâts augmenter: 1.1 -> 1.2
-### Taillade
+#### Taillade
 Ratio de dégâts augmenter: 1.35 -> 1.45
-### Stats overall
+#### Stats par niveau
 Defense par niveau augmenter: 5 -> 7<br>
 PV par niveau diminuer: 70 -> 65 
 
 ## Prêtre
 La classe prêtre est trop polivalente, nous aimons son kit, mais souhaitons rendre le choix du héro moins évident !
-### Stats overall
+#### Stats par niveau
 Attaque par niveau diminuer: 15 -> 10<br>
 Defense par niveau augmenter: 1 -> 2 
