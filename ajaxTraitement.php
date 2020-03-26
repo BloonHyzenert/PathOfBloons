@@ -121,10 +121,8 @@ if(isset($_POST['hero'])) {
 
     $arr_retour = [];
     $message_combat = ['message' => ''];
-    $arr_message = ['In carnage, I bloom, like a flower in the dawn', 'DIE DIE DIE !', "I must destroy even hope.", ""];
+    $arr_message = ['In carnage, I bloom, like a flower in the dawn', 'DIE DIE DIE !', "I must destroy even hope."];
     
-
-
     if($_POST['hero']['str_nom'] === 'Guerrier') { // Constructeurs surchargé
         $obj_hero = Guerrier::withArray($_POST['hero']);
     } else if($_POST['hero']['str_nom'] === 'Mage') {

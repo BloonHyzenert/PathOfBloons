@@ -75,7 +75,7 @@ function afficher_donnees(arr_retour) {
                 break;
             case "Pretre":
                 $('.energie-bar').css('background-color','gold');
-                applyChange(arr_retour.hero.int_foi, 50,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                applyChange(arr_retour.hero.int_foi_actuel, arr_retour.hero.int_foi_max,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
         }
         $('#attaqueMonstre').html(arr_retour.monstre.int_attaque);
