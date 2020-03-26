@@ -49,7 +49,7 @@ function afficher_donnees(arr_retour) {
                 applyChange(arr_retour.hero.int_mana, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
             case "Pretre":
-                applyChange(arr_retour.hero.int_foi, 100,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
+                applyChange(arr_retour.hero.int_foi, 50,'<img class="iconPV" src="./ressources/energie.png"></img>','energie');
                 break;
         }
         //$("#pv").html("<img class=\"iconPV\" src=\"./ressources/pointvie.svg\"></img>" + arr_retour.hero.int_pv_actuel + "/" + arr_retour.hero.int_pv);
