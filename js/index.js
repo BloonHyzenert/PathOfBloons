@@ -16,7 +16,7 @@ function afficher_donnees(arr_retour) {
         $('#niveau').html(0);
         $('#etage').html(arr_retour.niveau);
         applyChange(0, 100,'','xp');
-        $('#titre').html('Bienvenue dans notre super jeu. Veuillez choisir un personnage parmit les 3 proposés :');
+        $('#titre').html('Bienvenue dans notre super jeu. Veuillez choisir un personnage parmis les 3 proposés :');
 
         $('.spell1').css('display','block');
         $('.spell2').css('display','block');

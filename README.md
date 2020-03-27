@@ -6,9 +6,9 @@ Bienvenu dans PATH OF BLOONS !
 Le but du jeu est simple : aller le plus loin possible !
 
 Pour ce faire, vous devrez choisir un personnage parmis les 3 disponnibles :
--   Un Guerrier
--   Un Mage
--   Un prêtre
+-   Un Guerrier : Accumule de la rage pour asséner une attaque 3 fois plus puissante lorsqu'il atteint 100 points
+-   Un Mage : Consomme du mana pour lancé des sorts puissants. Il le récupère grâce à "Engelure"
+-   Un Prêtre : Gagne de l'énergie avec "Marteau spirituel" puis en consomme 50 grâce à la bénédiction lui permettant de se soigner.
 
 Chaque personnage dispo de 2 sorts, vous pouvez placer votre souris au dessus d'un sort pour en découvrir les effets 
 
